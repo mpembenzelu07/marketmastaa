@@ -3,155 +3,514 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pricing | MarketMastaa</title>
+  <meta name="description" content="Simple, transparent pricing for Tanzanian businesses. Start selling free for 3 months, then choose a plan that fits your growth." />
+  <title>Pricing | MarketMastaa - Affordable Plans for Every Business</title>
   
-  <!-- All the same head content as index.html -->
+  <!-- Favicon -->
+  <link rel="icon" href="https://marketmastaa-tz.github.io/logo.png" />
   
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            mastaa: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.3s ease-out',
+            'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)' },
+              '50%': { boxShadow: '0 0 30px rgba(16, 185, 129, 0.6)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    }
+    
+    .pricing-card {
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .pricing-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+      border-color: #10b981;
+    }
+    
+    .pricing-card.featured {
+      border: 2px solid #10b981;
+      box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+    }
+    
+    .featured-badge {
+      background: linear-gradient(90deg, #10b981, #34d399);
+      color: white;
+      font-weight: bold;
+      padding: 8px 24px;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-size: 0.875rem;
+    }
+    
+    .toggle-switch {
+      background: linear-gradient(90deg, #d1fae5, #a7f3d0);
+      border-radius: 50px;
+      padding: 4px;
+      position: relative;
+    }
+    
+    .toggle-option {
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: calc(50% - 4px);
+      height: calc(100% - 8px);
+      background: white;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .toggle-slider.annual {
+      left: calc(50% + 4px);
+    }
+    
+    .savings-badge {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      color: white;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-left: 8px;
+    }
+    
+    .feature-item {
+      transition: transform 0.2s ease;
+    }
+    
+    .feature-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .faq-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+      border-color: #10b981;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 20px 20px;
+      display: none;
+    }
+    
+    .faq-answer.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .value-card {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+    }
+    
+    .commission-card {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .commission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #10b98122, #34d39922);
+      border-radius: 0 0 0 100px;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-  <!-- Copy the Language Switcher and Navigation from index.html -->
-  
-  <!-- Pricing Hero -->
-  <section class="bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white py-20">
+  <!-- Header with Navigation -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 bg-mastaa-500 rounded-lg flex items-center justify-center group-hover:bg-mastaa-600 transition">
+            <span class="text-white font-bold text-xl">M</span>
+          </div>
+          <div>
+            <span class="font-display font-bold text-2xl text-mastaa-700">MARKETMASTAA</span>
+            <p class="text-xs text-gray-600 -mt-1">Digital Marketplace</p>
+          </div>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">About</a>
+          <a href="features.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Features</a>
+          <a href="pricing.html" class="text-mastaa-600 font-medium border-b-2 border-mastaa-500 pb-1">Pricing</a>
+          <a href="contact.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Contact</a>
+        </nav>
+        
+        <!-- CTA Button -->
+        <a href="signup.html" class="hidden md:block bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all transform hover:scale-105 hover:shadow-lg">
+          <i class="fas fa-store mr-2"></i>Start Free Trial
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="hidden md:hidden pb-4 border-t">
+        <div class="flex flex-col space-y-4 pt-4">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">About</a>
+          <a href="features.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Features</a>
+          <a href="pricing.html" class="text-mastaa-600 font-medium py-2 px-4 rounded-lg bg-mastaa-50">Pricing</a>
+          <a href="contact.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Contact</a>
+          <a href="signup.html" class="bg-gradient-to-r from-mastaa-500 to-mastaa-600 text-white font-bold py-3 px-4 rounded-lg text-center mt-2">
+            <i class="fas fa-store mr-2"></i>Start Free Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-20 md:py-28">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block mb-6 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+          <i class="fas fa-gem mr-2"></i>No Hidden Fees • Cancel Anytime
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+          Pricing That <span class="text-yellow-300">Grows With You</span>
+        </h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
+          Start selling free for 3 months, then choose a plan that fits your business. Simple, transparent pricing with no surprises.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#plans" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold px-8 py-3 rounded-lg shadow-lg transition">
+            <i class="fas fa-list-check mr-2"></i>View All Plans
+          </a>
+          <a href="#calculator" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold px-8 py-3 rounded-lg transition">
+            <i class="fas fa-calculator mr-2"></i>Calculate Savings
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="value-card p-8 text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-clock text-2xl text-mastaa-600"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">3 Months Free</h3>
+          <p class="text-gray-600">Start selling immediately with our free trial. No credit card required.</p>
+        </div>
+        
+        <div class="value-card p-8 text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-exchange-alt text-2xl text-mastaa-600"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Flexible Switching</h3>
+          <p class="text-gray-600">Change plans anytime as your business grows. No lock-in contracts.</p>
+        </div>
+        
+        <div class="value-card p-8 text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-shield-alt text-2xl text-mastaa-600"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Money-Back Guarantee</h3>
+          <p class="text-gray-600">30-day money-back guarantee if you're not satisfied with our platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Billing Toggle -->
+  <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">Simple, Transparent Pricing</h1>
-      <p class="text-xl opacity-90 max-w-3xl mx-auto">Start selling for free. Upgrade as you grow. No hidden fees, no surprises.</p>
+      <h3 class="text-lg font-bold text-gray-800 mb-4">Choose Your Billing Option</h3>
+      <div class="inline-flex items-center">
+        <span class="text-gray-700 font-medium mr-4">Monthly Billing</span>
+        
+        <div class="toggle-switch relative inline-flex p-1">
+          <div class="toggle-slider monthly"></div>
+          <button id="monthlyToggle" class="toggle-option active px-6 py-2 rounded-full font-bold text-mastaa-600">
+            Monthly
+          </button>
+          <button id="annualToggle" class="toggle-option px-6 py-2 rounded-full font-bold text-gray-600">
+            Annual <span class="savings-badge">Save 20%</span>
+          </button>
+        </div>
+        
+        <span class="text-gray-700 font-medium ml-4">Annual Billing</span>
+      </div>
     </div>
   </section>
 
   <!-- Pricing Plans -->
-  <section class="py-20">
+  <section id="plans" class="py-20">
     <div class="container mx-auto px-4">
-      <!-- Toggle between Monthly/Annual -->
-      <div class="flex justify-center mb-12">
-        <div class="bg-gray-100 rounded-full p-1 inline-flex">
-          <button class="px-6 py-3 rounded-full font-bold bg-white text-mastaa-600 shadow-sm">Monthly</button>
-          <button class="px-6 py-3 rounded-full font-bold text-gray-600">Annual (Save 20%)</button>
-        </div>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Choose Your Perfect Plan
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Start with our free plan and upgrade as your business grows. All plans include our core features.
+        </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Free Plan -->
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Starter Plan -->
+        <div class="pricing-card bg-white p-8 rounded-2xl">
           <div class="text-center mb-8">
+            <div class="inline-block px-4 py-1 bg-mastaa-100 text-mastaa-700 rounded-full text-sm font-bold mb-4">
+              PERFECT FOR BEGINNERS
+            </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
-            <div class="text-4xl font-bold text-gray-800 mb-2">FREE</div>
-            <div class="text-gray-600">for 3 months, then</div>
-            <div class="text-2xl font-bold text-gray-800">TZS 4,999<span class="text-lg text-gray-600">/month</span></div>
+            <div class="text-4xl font-bold text-gray-800 mb-2">
+              <span id="starterPrice">TZS 0</span>
+              <span class="text-lg text-gray-600">/month</span>
+            </div>
+            <div class="text-gray-600 mb-4">Free for 3 months, then TZS 4,999/month</div>
+            <div class="text-sm text-mastaa-600 font-medium">
+              <i class="fas fa-calendar-check mr-2"></i>No credit card required
+            </div>
           </div>
           
           <ul class="space-y-4 mb-8">
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Custom online store</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Custom online store</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Up to 50 product listings</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Up to 50 product listings</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Mobile payments (M-Pesa, Tigo Pesa)</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Mobile payments integration</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Basic analytics dashboard</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Basic analytics dashboard</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Email support</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Email support</span>
             </li>
           </ul>
           
-          <a href="signup.html" class="block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-4 rounded-xl transition">
+          <a href="signup.html" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-4 rounded-xl text-center transition transform hover:scale-105">
             Start Free Trial
           </a>
         </div>
         
-        <!-- Pro Plan -->
-        <div class="bg-white p-8 rounded-2xl shadow-xl border-2 border-mastaa-500 transform scale-105 relative">
-          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-            <div class="bg-mastaa-500 text-white px-4 py-1 rounded-full text-sm font-bold">
-              MOST POPULAR
-            </div>
+        <!-- Professional Plan -->
+        <div class="pricing-card bg-white p-8 rounded-2xl featured relative">
+          <div class="featured-badge">
+            <i class="fas fa-crown mr-2"></i>MOST POPULAR
           </div>
           
           <div class="text-center mb-8">
+            <div class="inline-block px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-bold mb-4">
+              BEST FOR GROWING BUSINESSES
+            </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-2">Professional</h3>
-            <div class="text-4xl font-bold text-gray-800 mb-2">TZS 9,999</div>
-            <div class="text-gray-600">per month</div>
-            <div class="text-sm text-gray-500 mt-2">Billed annually: TZS 95,990/year</div>
+            <div class="text-4xl font-bold text-gray-800 mb-2">
+              <span id="proPrice">TZS 9,999</span>
+              <span class="text-lg text-gray-600">/month</span>
+            </div>
+            <div class="text-gray-600 mb-4">
+              <span id="proAnnual" class="hidden">Billed annually: TZS 95,990/year</span>
+              <span id="proMonthly">Billed monthly</span>
+            </div>
+            <div class="text-sm text-mastaa-600 font-medium">
+              <i class="fas fa-bolt mr-2"></i>Everything in Starter plus advanced features
+            </div>
           </div>
           
           <ul class="space-y-4 mb-8">
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Everything in Starter, plus:</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Unlimited product listings</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Unlimited product listings</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Advanced analytics & insights</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Advanced analytics & insights</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Priority customer support</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Priority customer support</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Marketing tools & promotions</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Marketing tools & promotions</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Custom domain name included</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Custom domain name</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Bulk product upload tools</span>
             </li>
           </ul>
           
-          <a href="signup.html" class="block text-center bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold py-4 rounded-xl transition transform hover:scale-105">
-            Get Started
+          <a href="signup.html" class="block w-full bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold py-4 rounded-xl text-center transition transform hover:scale-105 animate-pulse-glow">
+            Get Started Now
           </a>
         </div>
         
         <!-- Enterprise Plan -->
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <div class="pricing-card bg-white p-8 rounded-2xl">
           <div class="text-center mb-8">
+            <div class="inline-block px-4 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-bold mb-4">
+              FOR ESTABLISHED BUSINESSES
+            </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-2">Enterprise</h3>
-            <div class="text-4xl font-bold text-gray-800 mb-2">Custom</div>
-            <div class="text-gray-600">tailored pricing</div>
+            <div class="text-5xl font-bold text-gray-800 mb-2">Custom</div>
+            <div class="text-gray-600 mb-4">Tailored pricing for your specific needs</div>
+            <div class="text-sm text-mastaa-600 font-medium">
+              <i class="fas fa-headset mr-2"></i>Dedicated account manager
+            </div>
           </div>
           
           <ul class="space-y-4 mb-8">
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Everything in Professional, plus:</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Everything in Professional</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Dedicated account manager</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Dedicated account manager</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>API access for integration</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">API access for integration</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Custom reporting</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"><
+                                                                         <span class="text-gray-700">Custom reporting & analytics</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Bulk product upload tools</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Team management features</span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span>Team management features</span>
+            <li class="feature-item flex items-start">
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">White-label options</span>
             </li>
           </ul>
           
-          <a href="contact.html" class="block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-4 rounded-xl transition">
+          <a href="contact.html" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-4 rounded-xl text-center transition transform hover:scale-105">
             Contact Sales
           </a>
         </div>
@@ -160,43 +519,155 @@
   </section>
 
   <!-- Commission Option -->
-  <section class="py-20 bg-gray-50">
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="commission-card p-8 md:p-12">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div class="inline-block px-4 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-bold mb-4">
+                FLEXIBLE OPTION
+              </div>
+              <h2 class="text-3xl font-display font-bold text-gray-800 mb-4">Pay-As-You-Sell Commission</h2>
+              <p class="text-gray-600 mb-6">No monthly fees. Only pay when you make sales. Perfect for testing the platform or seasonal businesses.</p>
+              
+              <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                <div class="flex items-center">
+                  <div class="text-5xl font-bold text-mastaa-600 mr-4">5%</div>
+                  <div>
+                    <div class="text-lg font-bold text-gray-800">Commission per sale</div>
+                    <div class="text-gray-600">No subscription fees</div>
+                  </div>
+                </div>
+              </div>
+              
+              <a href="signup.html" class="inline-flex items-center bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold px-8 py-3 rounded-lg transition transform hover:scale-105">
+                Start with Commission Plan <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-4">Ideal For:</h3>
+              <div class="space-y-4">
+                <div class="flex items-center p-4 bg-white/50 backdrop-blur-sm rounded-lg">
+                  <div class="w-10 h-10 bg-mastaa-100 rounded-full flex items-center justify-center mr-4">
+                    <i class="fas fa-rocket text-mastaa-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">New Sellers</h4>
+                    <p class="text-gray-600 text-sm">Test the platform risk-free</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center p-4 bg-white/50 backdrop-blur-sm rounded-lg">
+                  <div class="w-10 h-10 bg-mastaa-100 rounded-full flex items-center justify-center mr-4">
+                    <i class="fas fa-calendar-alt text-mastaa-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Seasonal Businesses</h4>
+                    <p class="text-gray-600 text-sm">Only pay during peak seasons</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center p-4 bg-white/50 backdrop-blur-sm rounded-lg">
+                  <div class="w-10 h-10 bg-mastaa-100 rounded-full flex items-center justify-center mr-4">
+                    <i class="fas fa-gem text-mastaa-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">High-Value Items</h4>
+                    <p class="text-gray-600 text-sm">Lower overall cost for expensive products</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center p-4 bg-white/50 backdrop-blur-sm rounded-lg">
+                  <div class="w-10 h-10 bg-mastaa-100 rounded-full flex items-center justify-center mr-4">
+                    <i class="fas fa-chart-line text-mastaa-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Variable Sales Volume</h4>
+                    <p class="text-gray-600 text-sm">Cost scales with your sales</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Savings Calculator -->
+  <section id="calculator" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Calculate Your Savings
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          See how much you can save by choosing MarketMastaa over traditional selling methods
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto bg-gray-50 rounded-2xl p-8">
+        <div class="grid md:grid-cols-2 gap-8">
           <div>
-            <h2 class="text-3xl font-display font-bold text-gray-800 mb-4">Pay-As-You-Sell Option</h2>
-            <p class="text-gray-600 mb-6">Prefer to pay only when you make a sale? Choose our commission-based model with no monthly fees.</p>
-            <div class="bg-mastaa-50 p-6 rounded-xl">
-              <div class="text-4xl font-bold text-mastaa-600 mb-2">5%</div>
-              <div class="text-gray-700 font-medium">Commission per sale</div>
-              <div class="text-sm text-gray-600 mt-2">No monthly subscription fee • Perfect for new sellers</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Enter Your Details</h3>
+            
+            <div class="space-y-6">
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">Monthly Sales Volume (TZS)</label>
+                <input type="range" id="salesVolume" min="100000" max="10000000" step="100000" value="500000" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-1">
+                  <span>TZS 100K</span>
+                  <span id="salesDisplay" class="font-bold">TZS 500,000</span>
+                  <span>TZS 10M</span>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">Average Product Price (TZS)</label>
+                <input type="range" id="productPrice" min="5000" max="500000" step="5000" value="50000" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-1">
+                  <span>TZS 5K</span>
+                  <span id="priceDisplay" class="font-bold">TZS 50,000</span>
+                  <span>TZS 500K</span>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">Current Marketing Cost (TZS/month)</label>
+                <input type="number" id="marketingCost" value="50000" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent">
+              </div>
             </div>
           </div>
           
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">When to choose this option:</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
-                <span>You're just starting out</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
-                <span>You have seasonal products</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
-                <span>You want to test the platform first</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
-                <span>You sell high-value items</span>
-              </li>
-            </ul>
-            <a href="signup.html" class="inline-block mt-6 bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold px-6 py-3 rounded-lg transition">
-              Start with Commission Plan
-            </a>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Your Estimated Savings</h3>
+            
+            <div class="space-y-4 mb-6">
+              <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                <span class="text-gray-700">Traditional Methods Cost</span>
+                <span id="traditionalCost" class="text-xl font-bold text-red-600">TZS 0</span>
+              </div>
+              
+              <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                <span class="text-gray-700">MarketMastaa Cost</span>
+                <span id="marketmastaaCost" class="text-xl font-bold text-mastaa-600">TZS 0</span>
+              </div>
+              
+              <div class="flex justify-between items-center p-4 bg-gradient-to-r from-mastaa-500 to-mastaa-600 text-white rounded-lg">
+                <span class="font-bold">Monthly Savings</span>
+                <span id="savings" class="text-2xl font-bold">TZS 0</span>
+              </div>
+            </div>
+            
+            <div class="bg-mastaa-50 p-4 rounded-lg">
+              <div class="flex items-center mb-2">
+                <i class="fas fa-lightbulb text-mastaa-600 mr-2"></i>
+                <h4 class="font-bold text-gray-800">Recommendation</h4>
+              </div>
+              <p id="recommendation" class="text-gray-700 text-sm">Based on your inputs, we recommend our Professional plan.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -204,46 +675,334 @@
   </section>
 
   <!-- FAQ -->
-  <section class="py-20">
+  <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Got questions? We've got answers</p>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Everything you need to know about our pricing and plans
+        </p>
       </div>
       
       <div class="max-w-3xl mx-auto">
-        <div class="space-y-6">
-          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Is there really a 3-month free trial?</h3>
-            <p class="text-gray-600">Yes! You can use our Starter plan completely free for 3 months. No credit card required to sign up.</p>
+        <div class="space-y-4">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Is there really a 3-month free trial?</span>
+              <i class="fas fa-chevron-down text-mastaa-600"></i>
+            </div>
+            <div class="faq-answer">
+              <p class="text-gray-600">Yes! Our Starter plan is completely free for the first 3 months. No credit card required to sign up. After 3 months, you can choose to continue with the Starter plan at TZS 4,999/month, upgrade to Professional, or switch to our commission-based model.</p>
+            </div>
           </div>
           
-          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Can I switch between plans?</h3>
-            <p class="text-gray-600">Absolutely. You can upgrade, downgrade, or switch to commission-based pricing at any time.</p>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Can I switch between plans?</span>
+              <i class="fas fa-chevron-down text-mastaa-600"></i>
+            </div>
+            <div class="faq-answer">
+              <p class="text-gray-600">Absolutely. You can upgrade, downgrade, or switch to commission-based pricing at any time. Changes take effect immediately, and we'll prorate any differences for the remainder of your billing cycle.</p>
+            </div>
           </div>
           
-          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800 mb-2">What payment methods do you accept?</h3>
-            <p class="text-gray-600">For subscription payments: M-Pesa, Tigo Pesa, Airtel Money, Visa, and Mastercard. For customer payments: All major Tanzanian mobile money providers and cards.</p>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>What payment methods do you accept?</span>
+              <i class="fas fa-chevron-down text-mastaa-600"></i>
+            </div>
+            <div class="faq-answer">
+              <p class="text-gray-600">For subscription payments: M-Pesa, Tigo Pesa, Airtel Money, Visa, and Mastercard. For customer payments on your store: All major Tanzanian mobile money providers and international cards. We also support bank transfers for Enterprise customers.</p>
+            </div>
           </div>
           
-          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Is there a contract or cancellation fee?</h3>
-            <p class="text-gray-600">No contracts and no cancellation fees. You can cancel your subscription at any time.</p>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Is there a contract or cancellation fee?</span>
+              <i class="fas fa-chevron-down text-mastaa-600"></i>
+            </div>
+            <div class="faq-answer">
+              <p class="text-gray-600">No contracts and no cancellation fees. You can cancel your subscription at any time. If you cancel, you'll continue to have access to your account until the end of your current billing period.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>What happens after my free trial ends?</span>
+              <i class="fas fa-chevron-down text-mastaa-600"></i>
+            </div>
+            <div class="faq-answer">
+              <p class="text-gray-600">We'll notify you 7 days before your trial ends. You can then choose to continue with the Starter plan, upgrade to Professional, switch to commission-based pricing, or export your data and close your account. No automatic charges will be made without your confirmation.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Do you offer discounts for non-profits or students?</span>
+              <i class="fas fa-chevron-down text-mastaa-600"></i>
+            </div>
+            <div class="faq-answer">
+              <p class="text-gray-600">Yes! We offer special pricing for registered non-profit organizations, educational institutions, and student entrepreneurs. Contact our sales team with documentation to learn more about our special programs.</p>
+            </div>
           </div>
         </div>
         
         <div class="text-center mt-12">
-          <p class="text-gray-600 mb-6">Still have questions?</p>
-          <a href="contact.html" class="inline-block bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold px-8 py-4 rounded-xl transition">
-            <i class="fas fa-question-circle mr-2"></i>Contact Support
+          <p class="text-gray-600 mb-6">Still have questions about pricing?</p>
+          <a href="contact.html" class="inline-flex items-center bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold px-8 py-4 rounded-xl transition transform hover:scale-105">
+            <i class="fas fa-comments mr-2"></i>Contact Our Support Team
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Copy the Footer from index.html -->
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+          Start Selling Risk-Free Today
+        </h2>
+        <p class="text-xl mb-8 opacity-90">
+          Join 10,000+ Tanzanian businesses that trust MarketMastaa to power their online sales. No credit card required.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="signup.html" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-105">
+            <i class="fas fa-rocket mr-2"></i>Start Your Free Trial
+          </a>
+          <a href="contact.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold px-8 py-4 rounded-xl transition">
+            <i class="fas fa-calendar-alt mr-2"></i>Schedule a Demo
+          </a>
+        </div>
+        
+        <p class="mt-8 text-sm opacity-90">
+          <i class="fas fa-shield-alt mr-2"></i>30-day money-back guarantee • No contracts • 24/7 Tanzanian support
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-mastaa-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+              <span class="text-mastaa-900 font-bold text-xl">M</span>
+            </div>
+            <span class="font-display font-bold text-2xl">MARKETMASTAA</span>
+          </div>
+          <p class="text-gray-300 mb-6">
+            Tanzania's leading digital marketplace connecting small businesses with customers nationwide.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+            <li><a href="features.html" class="text-gray-300 hover:text-white transition">Features</a></li>
+            <li><a href="pricing.html" class="text-gray-300 hover:text-white transition">Pricing</a></li>
+            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Resources</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Success Stories</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Help Center</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Seller Guide</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">API Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">GDPR Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-mastaa-800 mt-10 pt-8 text-center text-gray-400">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <i class="fas fa-map-marker-alt mr-2"></i>Mlimani City, Sam Nujoma Road, Dar es Salaam, Tanzania
+          </div>
+          <div>
+            © 2023 MarketMastaa. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Billing toggle functionality
+    const monthlyToggle = document.getElementById('monthlyToggle');
+    const annualToggle = document.getElementById('annualToggle');
+    const toggleSlider = document.querySelector('.toggle-slider');
+    const starterPrice = document.getElementById('starterPrice');
+    const proPrice = document.getElementById('proPrice');
+    const proAnnual = document.getElementById('proAnnual');
+    const proMonthly = document.getElementById('proMonthly');
+    
+    monthlyToggle.addEventListener('click', function() {
+      monthlyToggle.classList.add('active');
+      monthlyToggle.classList.remove('text-gray-600');
+      monthlyToggle.classList.add('text-mastaa-600');
+      
+      annualToggle.classList.remove('active');
+      annualToggle.classList.remove('text-mastaa-600');
+      annualToggle.classList.add('text-gray-600');
+      
+      toggleSlider.classList.remove('annual');
+      toggleSlider.classList.add('monthly');
+      
+      // Update prices for monthly billing
+      starterPrice.textContent = 'TZS 0';
+      proPrice.textContent = 'TZS 9,999';
+      proAnnual.classList.add('hidden');
+      proMonthly.classList.remove('hidden');
+    });
+    
+    annualToggle.addEventListener('click', function() {
+      annualToggle.classList.add('active');
+      annualToggle.classList.remove('text-gray-600');
+      annualToggle.classList.add('text-mastaa-600');
+      
+      monthlyToggle.classList.remove('active');
+      monthlyToggle.classList.remove('text-mastaa-600');
+      monthlyToggle.classList.add('text-gray-600');
+      
+      toggleSlider.classList.remove('monthly');
+      toggleSlider.classList.add('annual');
+      
+      // Update prices for annual billing (20% discount)
+      starterPrice.textContent = 'TZS 0';
+      proPrice.textContent = 'TZS 7,999';
+      proAnnual.classList.remove('hidden');
+      proMonthly.classList.add('hidden');
+    });
+    
+    // Savings calculator functionality
+    const salesVolume = document.getElementById('salesVolume');
+    const productPrice = document.getElementById('productPrice');
+    const marketingCost = document.getElementById('marketingCost');
+    const salesDisplay = document.getElementById('salesDisplay');
+    const priceDisplay = document.getElementById('priceDisplay');
+    const traditionalCost = document.getElementById('traditionalCost');
+    const marketmastaaCost = document.getElementById('marketmastaaCost');
+    const savings = document.getElementById('savings');
+    const recommendation = document.getElementById('recommendation');
+    
+    function formatCurrency(amount) {
+      return 'TZS ' + amount.toLocaleString('en-TZ');
+    }
+    
+    function updateCalculator() {
+      const sales = parseInt(salesVolume.value);
+      const price = parseInt(productPrice.value);
+      const marketing = parseInt(marketingCost.value) || 0;
+      
+      // Update displays
+      salesDisplay.textContent = formatCurrency(sales);
+      priceDisplay.textContent = formatCurrency(price);
+      
+      // Calculate traditional cost (20% of sales + marketing)
+      const traditional = (sales * 0.20) + marketing;
+      
+      // Calculate MarketMastaa cost (Professional plan + 0.05% for payment processing)
+      const marketmastaa = 9999 + (sales * 0.0005);
+      
+      // Calculate savings
+      const saving = traditional - marketmastaa;
+      
+      // Update results
+      traditionalCost.textContent = formatCurrency(Math.round(traditional));
+      marketmastaaCost.textContent = formatCurrency(Math.round(marketmastaa));
+      savings.textContent = formatCurrency(Math.round(saving));
+      
+      // Update recommendation
+      if (sales < 200000) {
+        recommendation.textContent = 'Based on your sales volume, we recommend starting with our free trial to test the platform.';
+      } else if (sales < 1000000) {
+        recommendation.textContent = 'Based on your sales volume, our Professional plan offers the best value for your business.';
+      } else {
+        recommendation.textContent = 'Based on your sales volume, consider our Enterprise plan for custom solutions and dedicated support.';
+      }
+    }
+    
+    // Initialize calculator
+    updateCalculator();
+    
+    // Add event listeners for calculator inputs
+    salesVolume.addEventListener('input', updateCalculator);
+    productPrice.addEventListener('input', updateCalculator);
+    marketingCost.addEventListener('input', updateCalculator);
+    
+    // FAQ toggle functionality
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('i');
+      
+      answer.classList.toggle('active');
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          document.getElementById('mobileMenu').classList.add('hidden');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+                                                                         
