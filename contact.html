@@ -3,20 +3,292 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | MarketMastaa</title>
+  <meta name="description" content="Contact MarketMastaa for support, sales inquiries, or partnerships. We're here to help Tanzanian businesses succeed online." />
+  <title>Contact Us | MarketMastaa - Get in Touch with Our Team</title>
   
-  <!-- All the same head content as index.html -->
+  <!-- Favicon -->
+  <link rel="icon" href="https://marketmastaa-tz.github.io/logo.png" />
   
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            mastaa: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.3s ease-out',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    }
+    
+    .contact-card {
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-input {
+      transition: all 0.3s ease;
+      border: 1px solid #d1d5db;
+    }
+    
+    .form-input:focus {
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+    
+    .support-card {
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .support-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .support-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .support-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+      border-color: #10b981;
+    }
+    
+    .map-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .whatsapp-button {
+      background: linear-gradient(90deg, #25D366, #128C7E);
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+    }
+    
+    .contact-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1);
+    }
+    
+    .success-message {
+      animation: slideUp 0.3s ease-out;
+    }
+    
+    .hours-badge {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      color: white;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-  <!-- Copy the Language Switcher and Navigation from index.html -->
-  
-  <!-- Contact Hero -->
-  <section class="bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">Get in Touch</h1>
-      <p class="text-xl opacity-90 max-w-3xl mx-auto">We're here to help you grow your business. Contact us with any questions or to schedule a demo.</p>
+  <!-- Header with Navigation -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 bg-mastaa-500 rounded-lg flex items-center justify-center group-hover:bg-mastaa-600 transition">
+            <span class="text-white font-bold text-xl">M</span>
+          </div>
+          <div>
+            <span class="font-display font-bold text-2xl text-mastaa-700">MARKETMASTAA</span>
+            <p class="text-xs text-gray-600 -mt-1">Digital Marketplace</p>
+          </div>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">About</a>
+          <a href="features.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Features</a>
+          <a href="pricing.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Pricing</a>
+          <a href="contact.html" class="text-mastaa-600 font-medium border-b-2 border-mastaa-500 pb-1">Contact</a>
+        </nav>
+        
+        <!-- CTA Button -->
+        <a href="signup.html" class="hidden md:block bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all transform hover:scale-105 hover:shadow-lg">
+          <i class="fas fa-store mr-2"></i>Start Free Trial
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="hidden md:hidden pb-4 border-t">
+        <div class="flex flex-col space-y-4 pt-4">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">About</a>
+          <a href="features.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Features</a>
+          <a href="pricing.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Pricing</a>
+          <a href="contact.html" class="text-mastaa-600 font-medium py-2 px-4 rounded-lg bg-mastaa-50">Contact</a>
+          <a href="signup.html" class="bg-gradient-to-r from-mastaa-500 to-mastaa-600 text-white font-bold py-3 px-4 rounded-lg text-center mt-2">
+            <i class="fas fa-store mr-2"></i>Start Free Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-20 md:py-28">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block mb-6 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium animate-float">
+          <i class="fas fa-headset mr-2"></i>24/7 Tanzanian Support Available
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+          We're Here to <span class="text-yellow-300">Help You Succeed</span>
+        </h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
+          Whether you're just getting started or scaling your business, our team is ready to support you every step of the way.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#contact-form" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold px-8 py-3 rounded-lg shadow-lg transition">
+            <i class="fas fa-envelope mr-2"></i>Send a Message
+          </a>
+          <a href="#support" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold px-8 py-3 rounded-lg transition">
+            <i class="fas fa-phone-alt mr-2"></i>Call Us Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Cards -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="contact-card bg-gray-50 p-8 rounded-2xl text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-question-circle text-2xl text-mastaa-600 contact-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">General Inquiries</h3>
+          <p class="text-gray-600 mb-4">Have questions about our platform or services?</p>
+          <div class="text-mastaa-600 font-bold mb-2">info@marketmastaa.co.tz</div>
+          <a href="mailto:info@marketmastaa.co.tz" class="inline-flex items-center text-mastaa-500 hover:text-mastaa-700 font-medium">
+            Send Email <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="contact-card bg-gray-50 p-8 rounded-2xl text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-headset text-2xl text-blue-600 contact-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Technical Support</h3>
+          <p class="text-gray-600 mb-4">Need help with your account or technical issues?</p>
+          <div class="text-blue-600 font-bold mb-2">support@marketmastaa.co.tz</div>
+          <a href="mailto:support@marketmastaa.co.tz" class="inline-flex items-center text-blue-500 hover:text-blue-700 font-medium">
+            Get Support <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="contact-card bg-gray-50 p-8 rounded-2xl text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-handshake text-2xl text-purple-600 contact-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Sales & Partnerships</h3>
+          <p class="text-gray-600 mb-4">Interested in partnerships or enterprise solutions?</p>
+          <div class="text-purple-600 font-bold mb-2">sales@marketmastaa.co.tz</div>
+          <a href="mailto:sales@marketmastaa.co.tz" class="inline-flex items-center text-purple-500 hover:text-purple-700 font-medium">
+            Contact Sales <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -25,117 +297,177 @@
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Contact Form -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-          <h2 class="text-2xl font-display font-bold text-gray-800 mb-8">Send us a message</h2>
+        <div id="contact-form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-paper-plane text-xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-display font-bold text-gray-800">Send us a Message</h2>
+              <p class="text-gray-600">We typically respond within 2 business hours</p>
+            </div>
+          </div>
           
-          <form id="contact-form" class="space-y-6">
+          <form id="contactForm" class="space-y-6">
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label for="first-name" class="block text-gray-700 font-medium mb-2">First Name</label>
-                <input type="text" id="first-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent" required>
+                <label for="firstName" class="block text-gray-700 font-medium mb-2">First Name *</label>
+                <input type="text" id="firstName" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
               </div>
               
               <div>
-                <label for="last-name" class="block text-gray-700 font-medium mb-2">Last Name</label>
-                <input type="text" id="last-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent" required>
+                <label for="lastName" class="block text-gray-700 font-medium mb-2">Last Name *</label>
+                <input type="text" id="lastName" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
               </div>
             </div>
             
             <div>
-              <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-              <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent" required>
+              <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+              <input type="email" id="email" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
             </div>
             
             <div>
-              <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-              <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent" required>
+              <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <span class="text-gray-500">+255</span>
+                </div>
+                <input type="tel" id="phone" class="form-input w-full pl-16 py-3 rounded-lg focus:outline-none" placeholder="789 456 123" required>
+              </div>
             </div>
             
             <div>
-              <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-              <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent" required>
-                <option value="">Select a topic</option>
-                <option value="sales">Sales Inquiry</option>
-                <option value="support">Technical Support</option>
-                <option value="partnership">Partnership Opportunity</option>
-                <option value="media">Media Inquiry</option>
+              <label for="businessType" class="block text-gray-700 font-medium mb-2">Business Type</label>
+              <select id="businessType" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none">
+                <option value="">Select your business type</option>
+                <option value="retail">Retail Store</option>
+                <option value="handmade">Handmade Products</option>
+                <option value="agriculture">Agricultural Products</option>
+                <option value="fashion">Fashion & Apparel</option>
+                <option value="food">Food & Beverages</option>
+                <option value="services">Services</option>
                 <option value="other">Other</option>
               </select>
             </div>
             
             <div>
-              <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-              <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mastaa-500 focus:border-transparent" required></textarea>
+              <label for="inquiryType" class="block text-gray-700 font-medium mb-2">Inquiry Type *</label>
+              <select id="inquiryType" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                <option value="">Select inquiry type</option>
+                <option value="general">General Inquiry</option>
+                <option value="sales">Sales & Pricing</option>
+                <option value="technical">Technical Support</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="feedback">Feedback & Suggestions</option>
+                <option value="media">Media Inquiry</option>
+              </select>
             </div>
             
-            <button type="submit" class="w-full bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold py-4 rounded-xl transition transform hover:scale-105">
-              Send Message
+            <div>
+              <label for="message" class="block text-gray-700 font-medium mb-2">Your Message *</label>
+              <textarea id="message" rows="5" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="How can we help you today?" required></textarea>
+            </div>
+            
+            <div class="flex items-start">
+              <input type="checkbox" id="newsletter" class="mt-1 mr-3" checked>
+              <label for="newsletter" class="text-gray-600 text-sm">
+                Yes, I'd like to receive marketing communications and updates from MarketMastaa. I can unsubscribe at any time.
+              </label>
+            </div>
+            
+            <button type="submit" class="w-full bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold py-4 rounded-xl transition-all transform hover:scale-105 hover:shadow-lg">
+              <i class="fas fa-paper-plane mr-2"></i>Send Message
             </button>
           </form>
           
-          <div id="form-success" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-lg">
-            <i class="fas fa-check-circle mr-2"></i>Thank you! Your message has been sent successfully.
+          <div id="successMessage" class="hidden success-message mt-6 p-4 bg-gradient-to-r from-green-50 to-green-100 border border-green-200 text-green-800 rounded-xl">
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-check text-green-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Message Sent Successfully!</h4>
+                <p class="text-sm">Thank you for contacting us. We'll get back to you within 2 business hours.</p>
+              </div>
+            </div>
           </div>
         </div>
         
-        <!-- Contact Info -->
+        <!-- Contact Information -->
         <div>
           <h2 class="text-2xl font-display font-bold text-gray-800 mb-8">Contact Information</h2>
           
           <div class="space-y-8">
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-mastaa-100 rounded-lg flex items-center justify-center mr-4">
-                <i class="fas fa-map-marker-alt text-mastaa-600 text-xl"></i>
+            <div class="contact-item flex items-start p-6 bg-gray-50 rounded-xl hover:bg-white transition">
+              <div class="w-14 h-14 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-xl flex items-center justify-center mr-4">
+                <i class="fas fa-map-marker-alt text-xl text-mastaa-600 contact-icon"></i>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-gray-800 mb-1">Visit Our Office</h3>
-                <p class="text-gray-600">Mlimani City, 3rd Floor<br>Sam Nujoma Road<br>Dar es Salaam, Tanzania</p>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Visit Our Office</h3>
+                <p class="text-gray-600 mb-2">Mlimani City, 3rd Floor<br>Sam Nujoma Road<br>Dar es Salaam, Tanzania</p>
+                <a href="https://maps.google.com/?q=Mlimani+City+Dar+es+Salaam" target="_blank" class="text-mastaa-600 font-medium hover:text-mastaa-700 inline-flex items-center">
+                  <i class="fas fa-directions mr-2"></i>Get Directions
+                </a>
               </div>
             </div>
             
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-mastaa-100 rounded-lg flex items-center justify-center mr-4">
-                <i class="fas fa-phone-alt text-mastaa-600 text-xl"></i>
+            <div class="contact-item flex items-start p-6 bg-gray-50 rounded-xl hover:bg-white transition">
+              <div class="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mr-4">
+                <i class="fas fa-phone-alt text-xl text-blue-600 contact-icon"></i>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-gray-800 mb-1">Call Us</h3>
-                <p class="text-gray-600">+255 789 456 123<br>Monday - Friday, 8AM - 6PM EAT</p>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Call Us</h3>
+                <div class="mb-4">
+                  <div class="text-xl font-bold text-gray-800 mb-1">+255 789 456 123</div>
+                  <div class="text-gray-600">General inquiries & support</div>
+                </div>
+                <div class="flex items-center">
+                  <span class="hours-badge">OPEN NOW</span>
+                  <span class="ml-3 text-gray-600 text-sm">Mon-Fri: 8AM-6PM EAT</span>
+                </div>
               </div>
             </div>
             
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-mastaa-100 rounded-lg flex items-center justify-center mr-4">
-                <i class="fas fa-envelope text-mastaa-600 text-xl"></i>
+            <div class="contact-item flex items-start p-6 bg-gray-50 rounded-xl hover:bg-white transition">
+              <div class="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mr-4">
+                <i class="fas fa-comments text-xl text-purple-600 contact-icon"></i>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-gray-800 mb-1">Email Us</h3>
-                <p class="text-gray-600">
-                  General: info@marketmastaa.co.tz<br>
-                  Support: support@marketmastaa.co.tz<br>
-                  Sales: sales@marketmastaa.co.tz
-                </p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-mastaa-100 rounded-lg flex items-center justify-center mr-4">
-                <i class="fas fa-headset text-mastaa-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-gray-800 mb-1">Live Support</h3>
-                <p class="text-gray-600 mb-3">Chat with our support team on WhatsApp</p>
-                <a href="https://wa.me/255789456123" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-lg transition">
-                  <i class="fab fa-whatsapp mr-2 text-xl"></i>Chat on WhatsApp
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Live Support</h3>
+                <p class="text-gray-600 mb-4">Chat with our support team instantly via WhatsApp</p>
+                <a href="https://wa.me/255789456123" target="_blank" class="whatsapp-button inline-flex items-center text-white font-bold px-6 py-3 rounded-lg">
+                  <i class="fabfa-whatsapp mr-2 text-2xl"></i>
+                  <div>
+                    <div class="text-sm">Chat on WhatsApp</div>
+                    <div class="text-xs opacity-90">Typically replies in minutes</div>
+                  </div>
                 </a>
               </div>
             </div>
           </div>
           
-          <!-- Map Placeholder -->
-          <div class="mt-12 bg-gray-200 rounded-2xl h-64 flex items-center justify-center text-gray-500">
-            <div class="text-center">
-              <i class="fas fa-map-marked-alt text-3xl mb-3"></i>
-              <p>Interactive Map Location</p>
+          <!-- Map -->
+          <div class="mt-12">
+            <div class="map-container h-80 p-6">
+              <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-mastaa-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-map-marked-alt text-mastaa-600"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-gray-800">Our Location</h3>
+                  <p class="text-gray-600 text-sm">Find us at Mlimani City, Dar es Salaam</p>
+                </div>
+              </div>
+              
+              <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-48 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <i class="fas fa-map-pin text-2xl text-mastaa-600"></i>
+                  </div>
+                  <p class="text-gray-600 font-medium">Interactive Map</p>
+                  <p class="text-gray-500 text-sm">Would show Google Maps integration here</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -144,69 +476,395 @@
   </section>
 
   <!-- Support Options -->
-  <section class="py-20 bg-gray-50">
+  <section id="support" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">Need Help?</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">We offer multiple ways to get the support you need</p>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Multiple Ways to Get Support
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Choose the support option that works best for you
+        </p>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white p-8 rounded-2xl shadow-md text-center">
-          <div class="w-16 h-16 bg-mastaa-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="fas fa-question-circle text-2xl text-mastaa-600"></i>
+        <div class="support-card bg-white p-8 rounded-2xl">
+          <div class="text-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-book-open text-2xl text-mastaa-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Knowledge Base</h3>
+            <p class="text-gray-600">Browse our comprehensive guides, tutorials, and FAQs.</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Help Center</h3>
-          <p class="text-gray-600 mb-6">Browse our comprehensive knowledge base with tutorials and FAQs.</p>
-          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700">
-            Visit Help Center <i class="fas fa-arrow-right ml-2"></i>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-mastaa-500 mr-3"></i>
+              <span>Step-by-step tutorials</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-mastaa-500 mr-3"></i>
+              <span>Video walkthroughs</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-mastaa-500 mr-3"></i>
+              <span>Troubleshooting guides</span>
+            </li>
+          </ul>
+          <a href="#" class="block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 rounded-lg transition">
+            Visit Help Center
           </a>
         </div>
         
-        <div class="bg-white p-8 rounded-2xl shadow-md text-center">
-          <div class="w-16 h-16 bg-mastaa-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="fas fa-users text-2xl text-mastaa-600"></i>
+        <div class="support-card bg-white p-8 rounded-2xl">
+          <div class="text-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-users text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Community Forum</h3>
+            <p class="text-gray-600">Connect with fellow sellers and share experiences.</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Community Forum</h3>
-          <p class="text-gray-600 mb-6">Connect with other sellers, share tips, and get advice from peers.</p>
-          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700">
-            Join Community <i class="fas fa-arrow-right ml-2"></i>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-blue-500 mr-3"></i>
+              <span>Peer-to-peer support</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-blue-500 mr-3"></i>
+              <span>Success stories</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-blue-500 mr-3"></i>
+              <span>Tips & best practices</span>
+            </li>
+          </ul>
+          <a href="#" class="block text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-3 rounded-lg transition">
+            Join Community
           </a>
         </div>
         
-        <div class="bg-white p-8 rounded-2xl shadow-md text-center">
-          <div class="w-16 h-16 bg-mastaa-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="fas fa-calendar-alt text-2xl text-mastaa-600"></i>
+        <div class="support-card bg-white p-8 rounded-2xl">
+          <div class="text-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-calendar-check text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Schedule a Demo</h3>
+            <p class="text-gray-600">Get a personalized walkthrough of our platform.</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Schedule a Demo</h3>
-          <p class="text-gray-600 mb-6">Book a personalized demo with our sales team to see the platform in action.</p>
-          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700">
-            Book Demo <i class="fas fa-arrow-right ml-2"></i>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-purple-500 mr-3"></i>
+              <span>One-on-one consultation</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-purple-500 mr-3"></i>
+              <span>Live Q&A session</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <i class="fas fa-check text-purple-500 mr-3"></i>
+              <span>Customized advice</span>
+            </li>
+          </ul>
+          <a href="#" class="block text-center bg-purple-100 hover:bg-purple-200 text-purple-800 font-bold py-3 rounded-lg transition">
+            Book a Demo
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Copy the Footer from index.html -->
-  
-  <!-- Contact Form JavaScript -->
+  <!-- Response Time -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-mastaa-50 to-blue-50 rounded-2xl p-8 md:p-12">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-display font-bold text-gray-800 mb-4">
+                Our Response Commitment
+              </h2>
+              <p class="text-gray-600 mb-6">
+                We're committed to providing timely and helpful support to all our users.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shadow-sm">
+                    <i class="fas fa-clock text-mastaa-600"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">2 Hours</div>
+                    <div class="text-gray-600 text-sm">Average email response time</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shadow-sm">
+                    <i class="fab fa-whatsapp text-green-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">15 Minutes</div>
+                    <div class="text-gray-600 text-sm">Average WhatsApp response time</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shadow-sm">
+                    <i class="fas fa-phone text-blue-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">Immediate</div>
+                    <div class="text-gray-600 text-sm">Phone support during business hours</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+              <h3 class="text-xl font-bold text-gray-800 mb-4">Business Hours</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <span class="text-gray-700">Monday - Friday</span>
+                  <span class="font-bold text-gray-800">8:00 AM - 6:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <span class="text-gray-700">Saturday</span>
+                  <span class="font-bold text-gray-800">9:00 AM - 2:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <span class="text-gray-700">Sunday</span>
+                  <span class="font-bold text-gray-800">Emergency Support Only</span>
+                </div>
+              </div>
+              <div class="mt-6 p-4 bg-yellow-50 rounded-lg">
+                <div class="flex items-center">
+                  <i class="fas fa-exclamation-triangle text-yellow-500 mr-3"></i>
+                  <span class="text-yellow-800 text-sm">24/7 emergency support available for critical issues</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+          Ready to Transform Your Business?
+        </h2>
+        <p class="text-xl mb-8 opacity-90">
+          Contact us today and discover how MarketMastaa can help you grow your online presence.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="signup.html" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-105">
+            <i class="fas fa-rocket mr-2"></i>Start Free Trial
+          </a>
+          <a href="tel:+255789456123" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold px-8 py-4 rounded-xl transition">
+            <i class="fas fa-phone-alt mr-2"></i>Call Us Now
+          </a>
+        </div>
+        
+        <p class="mt-8 text-sm opacity-90">
+          <i class="fas fa-shield-alt mr-2"></i>We respect your privacy and never share your information
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-mastaa-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+              <span class="text-mastaa-900 font-bold text-xl">M</span>
+            </div>
+            <span class="font-display font-bold text-2xl">MARKETMASTAA</span>
+          </div>
+          <p class="text-gray-300 mb-6">
+            Tanzania's leading digital marketplace connecting small businesses with customers nationwide.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+            <li><a href="features.html" class="text-gray-300 hover:text-white transition">Features</a></li>
+            <li><a href="pricing.html" class="text-gray-300 hover:text-white transition">Pricing</a></li>
+            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Resources</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Success Stories</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Help Center</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Seller Guide</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">API Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">GDPR Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-mastaa-800 mt-10 pt-8 text-center text-gray-400">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <i class="fas fa-map-marker-alt mr-2"></i>Mlimani City, Sam Nujoma Road, Dar es Salaam, Tanzania
+          </div>
+          <div>
+            © 2023 MarketMastaa. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // In a real implementation, you would send this data to a server
-      // For this demo, we'll just show a success message
+      // Get form values
+      const firstName = document.getElementById('firstName').value;
+      const email = document.getElementById('email').value;
       
-      const successMessage = document.getElementById('form-success');
+      // Show success message
+      const successMessage = document.getElementById('successMessage');
       successMessage.classList.remove('hidden');
       
-      // Reset form
+      // Update success message with personal touch
+      successMessage.querySelector('h4').textContent = `Thank you, ${firstName}!`;
+      successMessage.querySelector('p').textContent = `We've received your message and will contact you at ${email} within 2 business hours.`;
+      
+      // Reset form after 5 seconds
       setTimeout(() => {
         this.reset();
         successMessage.classList.add('hidden');
-      }, 5000);
+      }, 8000);
+      
+      // In a real implementation, you would send this data to a server here
+      console.log('Form submitted:', {
+        firstName,
+        lastName: document.getElementById('lastName').value,
+        email,
+        phone: document.getElementById('phone').value,
+        businessType: document.getElementById('businessType').value,
+        inquiryType: document.getElementById('inquiryType').value,
+        message: document.getElementById('message').value
+      });
     });
+    
+    // Form validation
+    const formInputs = document.querySelectorAll('.form-input');
+    formInputs.forEach(input => {
+      input.addEventListener('blur', function() {
+        if (this.value.trim() === '' && this.hasAttribute('required')) {
+          this.classList.add('border-red-300');
+          this.classList.remove('border-gray-300');
+        } else {
+          this.classList.remove('border-red-300');
+          this.classList.add('border-gray-300');
+        }
+      });
+      
+      input.addEventListener('input', function() {
+        if (this.value.trim() !== '') {
+          this.classList.remove('border-red-300');
+          this.classList.add('border-gray-300');
+        }
+      });
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          document.getElementById('mobileMenu').classList.add('hidden');
+        }
+      });
+    });
+    
+    // Update business hours badge based on current time
+    function updateBusinessHours() {
+      const badge = document.querySelector('.hours-badge');
+      const now = new Date();
+      const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+      const hour = now.getHours();
+      
+      if (day >= 1 && day <= 5) { // Monday to Friday
+        if (hour >= 8 && hour < 18) {
+          badge.textContent = 'OPEN NOW';
+          badge.style.background = 'linear-gradient(90deg, #10b981, #34d399)';
+        } else {
+          badge.textContent = 'CLOSED NOW';
+          badge.style.background = 'linear-gradient(90deg, #ef4444, #f87171)';
+        }
+      } else if (day === 6) { // Saturday
+        if (hour >= 9 && hour < 14) {
+          badge.textContent = 'OPEN NOW';
+          badge.style.background = 'linear-gradient(90deg, #10b981, #34d399)';
+        } else {
+          badge.textContent = 'CLOSED NOW';
+          badge.style.background = 'linear-gradient(90deg, #ef4444, #f87171)';
+        }
+      } else { // Sunday
+        badge.textContent = 'EMERGENCY ONLY';
+        badge.style.background = 'linear-gradient(90deg, #f59e0b, #fbbf24)';
+      }
+    }
+    
+    // Initialize business hours badge
+    updateBusinessHours();
+    
+    // Update badge every minute
+    setInterval(updateBusinessHours, 60000);
   </script>
 </body>
 </html>
