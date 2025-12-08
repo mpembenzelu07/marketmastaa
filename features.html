@@ -3,255 +3,862 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Features | MarketMastaa</title>
+  <meta name="description" content="Discover MarketMastaa's powerful features designed specifically for Tanzanian businesses to thrive online." />
+  <title>Features | MarketMastaa - Complete Digital Selling Solution</title>
   
-  <!-- All the same head content as index.html -->
+  <!-- Favicon -->
+  <link rel="icon" href="https://marketmastaa-tz.github.io/logo.png" />
   
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            mastaa: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.3s ease-out',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    }
+    
+    .feature-card {
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+      border-color: #10b981;
+    }
+    
+    .feature-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+    }
+    
+    .comparison-card {
+      transition: all 0.3s ease;
+    }
+    
+    .comparison-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stats-ring {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .stats-ring::before {
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: white;
+    }
+    
+    .stats-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-  <!-- Copy the Language Switcher and Navigation from index.html -->
-  
-  <!-- Features Hero -->
-  <section class="bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white py-20">
+  <!-- Header with Navigation -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">Everything You Need to Sell Online</h1>
-        <p class="text-xl opacity-90">Powerful tools designed specifically for Tanzanian businesses to grow and succeed in the digital marketplace.</p>
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 bg-mastaa-500 rounded-lg flex items-center justify-center group-hover:bg-mastaa-600 transition">
+            <span class="text-white font-bold text-xl">M</span>
+          </div>
+          <div>
+            <span class="font-display font-bold text-2xl text-mastaa-700">MARKETMASTAA</span>
+            <p class="text-xs text-gray-600 -mt-1">Digital Marketplace</p>
+          </div>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">About</a>
+          <a href="features.html" class="text-mastaa-600 font-medium border-b-2 border-mastaa-500 pb-1">Features</a>
+          <a href="pricing.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Pricing</a>
+          <a href="contact.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition">Contact</a>
+        </nav>
+        
+        <!-- CTA Button -->
+        <a href="signup.html" class="hidden md:block bg-gradient-to-r from-mastaa-500 to-mastaa-600 hover:from-mastaa-600 hover:to-mastaa-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all transform hover:scale-105 hover:shadow-lg">
+          <i class="fas fa-store mr-2"></i>Start Free Trial
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="hidden md:hidden pb-4 border-t">
+        <div class="flex flex-col space-y-4 pt-4">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">About</a>
+          <a href="features.html" class="text-mastaa-600 font-medium py-2 px-4 rounded-lg bg-mastaa-50">Features</a>
+          <a href="pricing.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Pricing</a>
+          <a href="contact.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 px-4 rounded-lg hover:bg-gray-100">Contact</a>
+          <a href="signup.html" class="bg-gradient-to-r from-mastaa-500 to-mastaa-600 text-white font-bold py-3 px-4 rounded-lg text-center mt-2">
+            <i class="fas fa-store mr-2"></i>Start Free Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-20 md:py-28">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block mb-6 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+          <i class="fas fa-star mr-2"></i>Tanzania's Most Complete Selling Platform
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+          Everything You Need to<br>
+          <span class="text-yellow-300">Sell Successfully Online</span>
+        </h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
+          A comprehensive suite of tools designed specifically for Tanzanian businesses to launch, manage, and grow their digital presence.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#features" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold px-8 py-3 rounded-lg shadow-lg transition">
+            <i class="fas fa-list-check mr-2"></i>Explore All Features
+          </a>
+          <a href="signup.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold px-8 py-3 rounded-lg transition">
+            <i class="fas fa-play-circle mr-2"></i>Watch Platform Demo
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Features -->
-  <section class="py-20">
+  <!-- Stats Overview -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="stats-ring mx-auto mb-4" style="background: conic-gradient(#10b981 0% 85%, #d1fae5 85% 100%);">
+            <div class="stats-content">
+              <div class="text-3xl font-bold text-mastaa-600">85%</div>
+              <div class="text-sm text-gray-600">Faster Setup</div>
+            </div>
+          </div>
+          <p class="text-gray-700 font-medium">Compared to building from scratch</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="stats-ring mx-auto mb-4" style="background: conic-gradient(#10b981 0% 92%, #d1fae5 92% 100%);">
+            <div class="stats-content">
+              <div class="text-3xl font-bold text-mastaa-600">92%</div>
+              <div class="text-sm text-gray-600">Seller Satisfaction</div>
+            </div>
+          </div>
+          <p class="text-gray-700 font-medium">Based on customer surveys</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="stats-ring mx-auto mb-4" style="background: conic-gradient(#10b981 0% 78%, #d1fae5 78% 100%);">
+            <div class="stats-content">
+              <div class="text-3xl font-bold text-mastaa-600">78%</div>
+              <div class="text-sm text-gray-600">Time Saved</div>
+            </div>
+          </div>
+          <p class="text-gray-700 font-medium">On business administration</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="stats-ring mx-auto mb-4" style="background: conic-gradient(#10b981 0% 300%, #d1fae5 300% 100%);">
+            <div class="stats-content">
+              <div class="text-3xl font-bold text-mastaa-600">300%</div>
+              <div class="text-sm text-gray-600">Sales Growth</div>
+            </div>
+          </div>
+          <p class="text-gray-700 font-medium">Average increase for sellers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Categories -->
+  <section id="features" class="py-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">Complete Seller Toolkit</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">From store setup to delivery tracking, we've got you covered</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Complete Digital Selling Solution
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Every tool you need to build, manage, and grow your online business
+        </p>
       </div>
       
+      <!-- Feature Tabs Navigation -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="feature-tab active px-6 py-3 bg-mastaa-500 text-white font-bold rounded-lg shadow-md" data-tab="store-management">
+          <i class="fas fa-store mr-2"></i>Store Management
+        </button>
+        <button class="feature-tab px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-lg transition" data-tab="payments">
+          <i class="fas fa-money-bill-wave mr-2"></i>Payments
+        </button>
+        <button class="feature-tab px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-lg transition" data-tab="delivery">
+          <i class="fas fa-truck mr-2"></i>Delivery
+        </button>
+        <button class="feature-tab px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-lg transition" data-tab="marketing">
+          <i class="fas fa-bullhorn mr-2"></i>Marketing
+        </button>
+        <button class="feature-tab px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-lg transition" data-tab="analytics">
+          <i class="fas fa-chart-line mr-2"></i>Analytics
+        </button>
+      </div>
+      
+      <!-- Features Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Feature 1 -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-store text-2xl text-mastaa-600"></i>
+        <!-- Store Setup -->
+        <div class="feature-card bg-white p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-xl flex items-center justify-center mr-4 feature-icon">
+              <i class="fas fa-store-alt text-2xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-mastaa-500 mb-1">STORE MANAGEMENT</div>
+              <h3 class="text-xl font-bold text-gray-800">Professional Storefront</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Custom Storefront</h3>
-          <p class="text-gray-600 mb-4">Create a beautiful online store that reflects your brand. Customize colors, layout, and branding elements.</p>
-          <ul class="space-y-2 text-gray-600">
+          <p class="text-gray-600 mb-6">
+            Create a stunning online store that represents your brand perfectly. Choose from multiple professional templates or customize every detail.
+          </p>
+          <ul class="space-y-3 mb-6">
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Mobile-optimized design</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Mobile-first responsive design</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Custom domain option</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Custom domain connection</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Branded packaging templates</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Branded packaging designer</span>
             </li>
           </ul>
+          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700 inline-flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
         
-        <!-- Feature 2 -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-mobile-alt text-2xl text-mastaa-600"></i>
+        <!-- Product Management -->
+        <div class="feature-card bg-white p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-mastaa-200 rounded-xl flex items-center justify-center mr-4 feature-icon">
+              <i class="fas fa-boxes text-2xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-mastaa-500 mb-1">STORE MANAGEMENT</div>
+              <h3 class="text-xl font-bold text-gray-800">Product Management</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Mobile Payments</h3>
-          <p class="text-gray-600 mb-4">Accept payments from all major Tanzanian mobile money providers and international cards.</p>
-          <ul class="space-y-2 text-gray-600">
+          <p class="text-gray-600 mb-6">
+            Easily manage your entire product catalog with advanced tools for inventory, variants, pricing, and categorization.
+          </p>
+          <ul class="space-y-3 mb-6">
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>M-Pesa integration</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Bulk product import/export</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Tigo Pesa & Airtel Money</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Multiple product variants</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Visa/Mastercard support</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Real-time inventory tracking</span>
             </li>
           </ul>
+          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700 inline-flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
         
-        <!-- Feature 3 -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-truck text-2xl text-mastaa-600"></i>
+        <!-- Mobile Payments -->
+        <div class="feature-card bg-white p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-blue-100 rounded-xl flex items-center justify-center mr-4 feature-icon">
+              <i class="fas fa-mobile-alt text-2xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-blue-500 mb-1">PAYMENTS</div>
+              <h3 class="text-xl font-bold text-gray-800">Mobile Money Integration</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Delivery Network</h3>
-          <p class="text-gray-600 mb-4">Integrated with Tanzania's leading delivery services for nationwide coverage.</p>
-          <ul class="space-y-2 text-gray-600">
+          <p class="text-gray-600 mb-6">
+            Accept payments through all major Tanzanian mobile money providers with instant verification and secure processing.
+          </p>
+          <ul class="space-y-3 mb-6">
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Real-time tracking</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">M-Pesa, Tigo Pesa, Airtel Money</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Insurance coverage</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Instant payment confirmation</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Multiple carrier options</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Automatic reconciliation</span>
             </li>
           </ul>
+          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700 inline-flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
         
-        <!-- Feature 4 -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-chart-line text-2xl text-mastaa-600"></i>
+        <!-- Delivery Network -->
+        <div class="feature-card bg-white p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-green-100 rounded-xl flex items-center justify-center mr-4 feature-icon">
+              <i class="fas fa-shipping-fast text-2xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-green-500 mb-1">DELIVERY</div>
+              <h3 class="text-xl font-bold text-gray-800">Nationwide Delivery Network</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Advanced Analytics</h3>
-          <p class="text-gray-600 mb-4">Understand your customers and optimize your sales with detailed insights.</p>
-          <ul class="space-y-2 text-gray-600">
+          <p class="text-gray-600 mb-6">
+            Integrated with Tanzania's leading delivery partners for reliable, trackable shipping to every corner of the country.
+          </p>
+          <ul class="space-y-3 mb-6">
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Sales performance dashboard</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Real-time package tracking</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Customer behavior insights</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Multiple carrier options</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Inventory management tools</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Automated shipping labels</span>
             </li>
           </ul>
+          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700 inline-flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
         
-        <!-- Feature 5 -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-bullhorn text-2xl text-mastaa-600"></i>
+        <!-- Marketing Tools -->
+        <div class="feature-card bg-white p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-purple-100 rounded-xl flex items-center justify-center mr-4 feature-icon">
+              <i class="fas fa-chart-bar text-2xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-purple-500 mb-1">MARKETING</div>
+              <h3 class="text-xl font-bold text-gray-800">Advanced Marketing Suite</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Marketing Tools</h3>
-          <p class="text-gray-600 mb-4">Reach more customers with built-in marketing and promotion features.</p>
-          <ul class="space-y-2 text-gray-600">
+          <p class="text-gray-600 mb-6">
+            Reach more customers with powerful marketing tools designed to increase visibility and drive sales.
+          </p>
+          <ul class="space-y-3 mb-6">
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Promotional discounts</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Email campaign automation</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Email marketing campaigns</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Social media integration</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Social media integration</span>
+             <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Discount & promotion engine</span>
             </li>
           </ul>
+          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700 inline-flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
         
-        <!-- Feature 6 -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-headset text-2xl text-mastaa-600"></i>
+        <!-- Analytics -->
+        <div class="feature-card bg-white p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-mastaa-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 feature-icon">
+              <i class="fas fa-chart-pie text-2xl text-mastaa-600"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-indigo-500 mb-1">ANALYTICS</div>
+              <h3 class="text-xl font-bold text-gray-800">Business Intelligence Dashboard</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">24/7 Support</h3>
-          <p class="text-gray-600 mb-4">Get help whenever you need it with our dedicated support team.</p>
-          <ul class="space-y-2 text-gray-600">
+          <p class="text-gray-600 mb-6">
+            Make data-driven decisions with comprehensive analytics that track every aspect of your business performance.
+          </p>
+          <ul class="space-y-3 mb-6">
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Phone & WhatsApp support</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Real-time sales analytics</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Seller training webinars</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Customer behavior insights</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-2 mt-1"></i>
-              <span>Detailed help center</span>
+              <i class="fas fa-check-circle text-mastaa-500 mr-3 mt-1"></i>
+              <span class="text-gray-700">Inventory forecasting</span>
             </li>
           </ul>
+          <a href="#" class="text-mastaa-600 font-bold hover:text-mastaa-700 inline-flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Feature Comparison -->
-  <section class="py-20 bg-gray-50">
+  <!-- Platform Comparison -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">Why Choose MarketMastaa?</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Compare our platform with traditional selling methods</p>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Why MarketMastaa Stands Out
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Compare how our platform transforms your selling experience
+        </p>
       </div>
       
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-3">
-          <div class="p-8 border-r border-gray-200">
-            <h3 class="text-xl font-bold text-gray-800 mb-6">Selling on Instagram/WhatsApp</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-times text-red-500 mr-3 mt-1"></i>
-                <span>Limited customer reach</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-times text-red-500 mr-3 mt-1"></i>
-                <span>Manual payment tracking</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-times text-red-500 mr-3 mt-1"></i>
-                <span>No organized product catalog</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-times text-red-500 mr-3 mt-1"></i>
-                <span>Trust issues with customers</span>
-              </li>
-            </ul>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="comparison-card bg-white p-8 rounded-2xl shadow-sm">
+          <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-times text-2xl text-red-500"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Traditional Methods</h3>
+            <p class="text-gray-600">Selling on social media or in-person</p>
           </div>
           
-          <div class="p-8 border-r border-gray-200 bg-mastaa-50">
-            <h3 class="text-xl font-bold text-gray-800 mb-6">MarketMastaa Platform</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-                <span>Nationwide customer base</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-                <span>Automated payment processing</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-                <span>Professional product catalog</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-                <span>Verified seller badges for trust</span>
-              </li>
-            </ul>
+          <div class="space-y-4">
+            <div class="flex items-start p-4 bg-red-50 rounded-lg">
+              <i class="fas fa-user-slash text-red-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-1">Limited Reach</h4>
+                <p class="text-gray-600 text-sm">Confined to your local area or followers</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-red-50 rounded-lg">
+              <i class="fas fa-hand-holding-usd text-red-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-1">Payment Uncertainty</h4>
+                <p class="text-gray-600 text-sm">Risk of fraud and manual tracking</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-red-50 rounded-lg">
+              <i class="fas fa-truck-loading text-red-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-1">Logistical Challenges</h4>
+                <p class="text-gray-600 text-sm">Complex delivery arrangements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparison-card bg-gradient-to-br from-mastaa-500 to-mastaa-600 p-8 rounded-2xl shadow-lg transform md:scale-105 relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+            <div class="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+              RECOMMENDED
+            </div>
           </div>
           
-          <div class="p-8">
-            <h3 class="text-xl font-bold text-gray-800 mb-6">Result for Your Business</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-chart-line text-mastaa-500 mr-3 mt-1"></i>
-                <span>300% average sales increase</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-clock text-mastaa-500 mr-3 mt-1"></i>
-                <span>70% time saved on admin tasks</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-user-plus text-mastaa-500 mr-3 mt-1"></i>
-                <span>Access to new customer segments</span>
-              </li>
-              <li class="flex items-start text-gray-600">
-                <i class="fas fa-shield-alt text-mastaa-500 mr-3 mt-1"></i>
-                <span>Reduced payment disputes</span>
-              </li>
-            </ul>
+          <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-store text-2xl text-mastaa-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">MarketMastaa Platform</h3>
+            <p class="text-white/90">Complete digital selling solution</p>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex items-start p-4 bg-white/10 backdrop-blur-sm rounded-lg">
+              <i class="fas fa-globe-africa text-white mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-white mb-1">Nationwide Reach</h4>
+                <p class="text-white/90 text-sm">Access customers across Tanzania</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-white/10 backdrop-blur-sm rounded-lg">
+              <i class="fas fa-shield-alt text-white mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-white mb-1">Secure Payments</h4>
+                <p class="text-white/90 text-sm">Guaranteed transactions with escrow</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-white/10 backdrop-blur-sm rounded-lg">
+              <i class="fas fa-truck-fast text-white mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-white mb-1">Integrated Logistics</h4>
+                <p class="text-white/90 text-sm">Seamless delivery with tracking</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparison-card bg-white p-8 rounded-2xl shadow-sm">
+          <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-chart-line text-2xl text-green-500"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Business Impact</h3>
+            <p class="text-gray-600">Results for MarketMastaa sellers</p>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex items-start p-4 bg-green-50 rounded-lg">
+              <i class="fas fa-chart-bar text-green-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-1">3x Sales Growth</h4>
+                <p class="text-gray-600 text-sm">Average increase within 6 months</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-green-50 rounded-lg">
+              <i class="fas fa-clock text-green-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-1">70% Time Saved</h4>
+                <p class="text-gray-600 text-sm">On administrative tasks</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-green-50 rounded-lg">
+              <i class="fas fa-user-plus text-green-500 mr-3 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-gray-800 mb-1">New Markets</h4>
+                <p class="text-gray-600 text-sm">Access to nationwide customers</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Copy the Footer from index.html -->
+  <!-- Testimonials -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">
+          Loved by Tanzanian Entrepreneurs
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          See how businesses are transforming with our platform
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-mastaa-400 to-mastaa-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+              SJ
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Sarah Juma</h4>
+              <p class="text-mastaa-600 text-sm">Handmade Crafts Business</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic mb-6">
+            "The analytics dashboard helped me identify my best-selling products. I increased my revenue by 250% in just 4 months by focusing on what works."
+          </p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+              JM
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Juma Mohamed</h4>
+              <p class="text-mastaa-600 text-sm">Agricultural Products</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic mb-6">
+            "The delivery integration saved me hours each week. Now I can ship to customers across Tanzania with just a few clicks and track everything in real-time."
+          </p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 p-8 rounded-2xl">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+              NW
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Neema William</h4>
+              <p class="text-mastaa-600 text-sm">Fashion Boutique</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic mb-6">
+            "The mobile payment integration is seamless. My customers love the convenience, and I love the security of knowing every transaction is verified."
+          </p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+          Ready to Transform Your Business?
+        </h2>
+        <p class="text-xl mb-8 opacity-90">
+          Join thousands of Tanzanian entrepreneurs who have taken their businesses online with MarketMastaa's complete selling platform.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="signup.html" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-105">
+            <i class="fas fa-rocket mr-2"></i>Start Free 3-Month Trial
+          </a>
+          <a href="contact.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold px-8 py-4 rounded-xl transition">
+            <i class="fas fa-calendar-alt mr-2"></i>Schedule a Demo
+          </a>
+        </div>
+        
+        <p class="mt-8 text-sm opacity-90">
+          <i class="fas fa-shield-alt mr-2"></i>No credit card required • Cancel anytime • 24/7 Tanzanian support
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-mastaa-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+              <span class="text-mastaa-900 font-bold text-xl">M</span>
+            </div>
+            <span class="font-display font-bold text-2xl">MARKETMASTAA</span>
+          </div>
+          <p class="text-gray-300 mb-6">
+            Tanzania's leading digital marketplace connecting small businesses with customers nationwide.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+            <li><a href="features.html" class="text-gray-300 hover:text-white transition">Features</a></li>
+            <li><a href="pricing.html" class="text-gray-300 hover:text-white transition">Pricing</a></li>
+            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Resources</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Success Stories</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Help Center</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Seller Guide</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">API Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">GDPR Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-mastaa-800 mt-10 pt-8 text-center text-gray-400">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <i class="fas fa-map-marker-alt mr-2"></i>Mlimani City, Sam Nujoma Road, Dar es Salaam, Tanzania
+          </div>
+          <div>
+            © 2023 MarketMastaa. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Feature tabs functionality
+    document.querySelectorAll('.feature-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.feature-tab').forEach(t => {
+          t.classList.remove('active');
+          t.classList.add('bg-gray-100', 'text-gray-800', 'hover:bg-gray-200');
+          t.classList.remove('bg-mastaa-500', 'text-white');
+        });
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        this.classList.remove('bg-gray-100', 'text-gray-800', 'hover:bg-gray-200');
+        this.classList.add('bg-mastaa-500', 'text-white');
+        
+        // In a real implementation, you would filter features based on the tab
+        const tabType = this.getAttribute('data-tab');
+        console.log(`Switching to ${tabType} features`);
+        // You would implement feature filtering logic here
+      });
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          document.getElementById('mobileMenu').classList.add('hidden');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
