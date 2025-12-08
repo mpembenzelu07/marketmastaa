@@ -4,23 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="MarketMastaa – Tanzania's #1 digital marketplace for small businesses. Create your digital shop today!" />
-  
-  <!-- Bilingual meta description -->
-  <meta name="description" content="MarketMastaa – Sokoni la kidijitali nambari 1 Tanzania kwa wafanyabiashara wadogo. Jenga duka lako la dijitali leo! | Tanzania's #1 digital marketplace for small businesses." />
-
   <title>MARKETMASTAA | Tanzania's Digital Marketplace</title>
-
+  
   <!-- Favicon -->
   <link rel="icon" href="https://marketmastaa-tz.github.io/logo.png" />
-
-  <!-- Google Fonts - Inter + Poppins -->
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome for icons -->
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -48,6 +44,7 @@
           animation: {
             'fade-in': 'fadeIn 0.5s ease-in-out',
             'slide-up': 'slideUp 0.3s ease-out',
+            'float': 'float 3s ease-in-out infinite',
           },
           keyframes: {
             fadeIn: {
@@ -57,13 +54,17 @@
             slideUp: {
               '0%': { transform: 'translateY(10px)', opacity: '0' },
               '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
             }
           }
         }
       }
     }
   </script>
-
+  
   <style>
     .hero-bg {
       background: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -88,10 +89,6 @@
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     
-    .trust-badge {
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    
     .language-content {
       display: none;
       animation: fadeIn 0.5s ease-in-out;
@@ -101,7 +98,6 @@
       display: block;
     }
     
-    /* App mockup styling */
     .phone-mockup {
       border-radius: 40px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -115,20 +111,33 @@
       overflow: hidden;
     }
     
-    .screen-content {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #059669;
+      line-height: 1;
+    }
+    
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      border-color: #10b981;
+      transform: translateY(-2px);
     }
   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-
   <!-- Language Switcher -->
   <div class="bg-white shadow-md">
     <div class="container mx-auto px-4 py-3">
-      <div class="flex justify-end">
+      <div class="flex justify-between items-center">
+        <div class="text-sm text-gray-600">
+          <i class="fas fa-phone-alt mr-2"></i>+255 789 456 123
+          <i class="fas fa-envelope ml-4 mr-2"></i>info@marketmastaa.co.tz
+        </div>
         <div class="flex bg-mastaa-100 rounded-lg p-1">
           <button id="swahili-btn" class="language-switch active px-4 py-2 rounded-md text-mastaa-700">
             <i class="fas fa-language mr-2"></i>Swahili
@@ -142,331 +151,289 @@
   </div>
 
   <!-- Navigation -->
-  <nav class="bg-white shadow-sm sticky top-0 z-10">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-2">
+        <a href="index.html" class="flex items-center space-x-2">
           <div class="w-10 h-10 bg-mastaa-500 rounded-lg flex items-center justify-center">
             <span class="text-white font-bold text-xl">M</span>
           </div>
           <span class="font-display font-bold text-2xl text-mastaa-700">MARKETMASTAA</span>
-        </div>
+        </a>
         
+        <!-- Desktop Navigation -->
         <div class="hidden md:flex space-x-8">
-          <a href="#features" class="text-gray-700 hover:text-mastaa-600 font-medium transition" data-swahili="Vipengele" data-english="Features">Vipengele</a>
-          <a href="#pricing" class="text-gray-700 hover:text-mastaa-600 font-medium transition" data-swahili="Bei" data-english="Pricing">Bei</a>
-          <a href="#testimonials" class="text-gray-700 hover:text-mastaa-600 font-medium transition" data-swahili="Usaidizi" data-english="Support">Usaidizi</a>
-          <a href="#about" class="text-gray-700 hover:text-mastaa-600 font-medium transition" data-swahili="Kuhusu Sisi" data-english="About">Kuhusu Sisi</a>
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition border-b-2 border-transparent hover:border-mastaa-500 pb-1">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition border-b-2 border-transparent hover:border-mastaa-500 pb-1">About</a>
+          <a href="features.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition border-b-2 border-transparent hover:border-mastaa-500 pb-1">Features</a>
+          <a href="pricing.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition border-b-2 border-transparent hover:border-mastaa-500 pb-1">Pricing</a>
+          <a href="contact.html" class="text-gray-700 hover:text-mastaa-600 font-medium transition border-b-2 border-transparent hover:border-mastaa-500 pb-1">Contact</a>
         </div>
         
-        <div>
-          <a href="#signup" class="bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105" data-swahili="Jisajili Sasa" data-english="Sign Up Now">Jisajili Sasa</a>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-700">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+        
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+          <a href="signup.html" class="bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">
+            <i class="fas fa-store mr-2"></i>Start Selling
+          </a>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation Menu -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t pt-4">
+        <div class="flex flex-col space-y-4">
+          <a href="index.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 border-l-4 border-mastaa-500 pl-4">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 border-l-4 border-transparent hover:border-mastaa-500 pl-4">About</a>
+          <a href="features.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 border-l-4 border-transparent hover:border-mastaa-500 pl-4">Features</a>
+          <a href="pricing.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 border-l-4 border-transparent hover:border-mastaa-500 pl-4">Pricing</a>
+          <a href="contact.html" class="text-gray-700 hover:text-mastaa-600 font-medium py-2 border-l-4 border-transparent hover:border-mastaa-500 pl-4">Contact</a>
+          <a href="signup.html" class="bg-mastaa-500 text-white font-bold px-6 py-3 rounded-lg text-center mt-2">
+            <i class="fas fa-store mr-2"></i>Start Selling
+          </a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section - Swahili (Default) -->
-  <header class="hero-bg text-white language-content active" id="hero-swahili">
+  <!-- Hero Section -->
+  <header class="hero-bg text-white">
     <div class="container mx-auto px-4 py-16 md:py-24">
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-display font-bold mb-6">
-          Jenga Duka Lako la Digital<br>
-          <span class="text-yellow-300">Bure kwa Miezi 3 Ya Kwanza</span>
-        </h1>
-        <p class="text-xl md:text-2xl mb-10 opacity-95">
-          Etsy + Jiji + Instagram Shop – iliyoundwa kwa ajili ya wafanyabiashara wa Tanzania
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#anza" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
-            Anza Kuuza Sasa (Bila Malipo)
-          </a>
-          <a href="#kwa-wateja" class="border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold text-lg px-8 py-4 rounded-xl transition duration-300">
-            <i class="fas fa-store mr-2"></i>Vinjari Bidhaa
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="w-full bg-white/10 backdrop-blur-sm py-4 mt-12">
-      <div class="container mx-auto px-4 text-center text-sm md:text-base">
-        <i class="fas fa-money-bill-wave mr-2"></i>Tunakubali M-Pesa • Tigo Pesa • Airtel Money • HaloPesa • Visa/Mastercard
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section - English (Hidden by default) -->
-  <header class="hero-bg text-white language-content" id="hero-english">
-    <div class="container mx-auto px-4 py-16 md:py-24">
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-display font-bold mb-6">
-          Build Your Digital Shop<br>
-          <span class="text-yellow-300">Free for the First 3 Months</span>
-        </h1>
-        <p class="text-xl md:text-2xl mb-10 opacity-95">
-          Etsy + Classifieds + Instagram Shop – Built for Tanzanian Businesses
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#start" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
-            Start Selling Now (Free)
-          </a>
-          <a href="#for-customers" class="border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold text-lg px-8 py-4 rounded-xl transition duration-300">
-            <i class="fas fa-store mr-2"></i>Browse Products
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="w-full bg-white/10 backdrop-blur-sm py-4 mt-12">
-      <div class="container mx-auto px-4 text-center text-sm md:text-base">
-        <i class="fas fa-money-bill-wave mr-2"></i>We Accept M-Pesa • Tigo Pesa • Airtel Money • HaloPesa • Visa/Mastercard
-      </div>
-    </div>
-  </header>
-
-  <!-- Trust badges -->
-  <section class="bg-white py-10 shadow-sm">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-wrap justify-center items-center gap-8 text-gray-700">
-        <div class="trust-badge flex flex-col items-center">
-          <span class="text-3xl font-bold text-mastaa-600">10,000+</span>
-          <span class="text-sm mt-1" data-swahili="Wauzaji" data-english="Sellers">Wauzaji</span>
-        </div>
-        <div class="trust-badge flex flex-col items-center">
-          <i class="fas fa-shield-alt text-2xl text-mastaa-500"></i>
-          <span class="text-sm mt-1" data-swahili="Uhakika wa Bidhaa" data-english="Product Guarantee">Uhakika wa Bidhaa</span>
-        </div>
-        <div class="trust-badge flex flex-col items-center">
-          <i class="fas fa-truck text-2xl text-mastaa-500"></i>
-          <span class="text-sm mt-1" data-swahili="Usafiri Nchini" data-english="Nationwide Delivery">Usafiri Nchini</span>
-        </div>
-        <div class="trust-badge flex flex-col items-center">
-          <i class="fas fa-handshake text-2xl text-mastaa-500"></i>
-          <span class="text-sm mt-1" data-swahili="Hakuna Ulaghai" data-english="No Scams">Hakuna Ulaghai</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="py-20 bg-gray-50" id="features">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4" data-swahili="Kwa Nini MarketMastaa?" data-english="Why MarketMastaa?">Kwa Nini MarketMastaa?</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-swahili="Tunatatua changamoto kuu zinazowakabili wafanyabiashara wadogo Tanzania" data-english="We solve the main challenges facing small businesses in Tanzania">
-          Tunatatua changamoto kuu zinazowakabili wafanyabiashara wadogo Tanzania
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="feature-card bg-white p-8 rounded-2xl shadow-md">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-eye text-2xl text-mastaa-600"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3" data-swahili="Kuonekana kwa Biashara" data-english="Business Visibility">Kuonekana kwa Biashara</h3>
-          <p class="text-gray-600" data-swahili="Wauzaji wadogo wanakosa mwonekano mtandaoni. Tunawapa duka la digital linaloweza kuonekana na wateja wengi." data-english="Small businesses lack online visibility. We give them a digital shop that can be seen by many customers.">
-            Wauzaji wadogo wanakosa mwonekano mtandaoni. Tunawapa duka la digital linaloweza kuonekana na wateja wengi.
+      <div class="flex flex-col lg:flex-row items-center">
+        <div class="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+            <span class="block">Build Your</span>
+            <span class="block text-yellow-300 mt-2">Digital Shop Today</span>
+          </h1>
+          <p class="text-xl mb-8 opacity-95 max-w-xl">
+            Tanzania's #1 marketplace for small businesses. Join 10,000+ sellers who have transformed their businesses online.
           </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="signup.html" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 text-center">
+              <i class="fas fa-rocket mr-2"></i>Start Free Trial
+            </a>
+            <a href="#how-it-works" class="border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold text-lg px-8 py-4 rounded-xl transition duration-300 text-center">
+              <i class="fas fa-play-circle mr-2"></i>See How It Works
+            </a>
+          </div>
+          <div class="mt-10 flex items-center justify-center lg:justify-start">
+            <div class="flex -space-x-3">
+              <div class="w-12 h-12 rounded-full bg-yellow-400 border-2 border-white flex items-center justify-center font-bold">A</div>
+              <div class="w-12 h-12 rounded-full bg-blue-400 border-2 border-white flex items-center justify-center font-bold">B</div>
+              <div class="w-12 h-12 rounded-full bg-red-400 border-2 border-white flex items-center justify-center font-bold">C</div>
+              <div class="w-12 h-12 rounded-full bg-purple-400 border-2 border-white flex items-center justify-center font-bold">D</div>
+            </div>
+            <div class="ml-4 text-left">
+              <div class="font-bold">10,000+ Active Sellers</div>
+              <div class="text-sm opacity-90">Trusted by businesses across Tanzania</div>
+            </div>
+          </div>
         </div>
         
-        <div class="feature-card bg-white p-8 rounded-2xl shadow-md">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-balance-scale text-2xl text-mastaa-600"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3" data-swahili="Kulinganisha Bei" data-english="Price Comparison">Kulinganisha Bei</h3>
-          <p class="text-gray-600" data-swahili="Wateja hawawezi kulinganisha bei kwa urahisi. Sokoni letu wanaweza kupata bei nzuri na ubora bora." data-english="Customers can't easily compare prices. In our marketplace they can find good prices and better quality.">
-            Wateja hawawezi kulinganisha bei kwa urahisi. Sokoni letu wanaweza kupata bei nzuri na ubora bora.
-          </p>
-        </div>
-        
-        <div class="feature-card bg-white p-8 rounded-2xl shadow-md">
-          <div class="w-14 h-14 bg-mastaa-100 rounded-xl flex items-center justify-center mb-6">
-            <i class="fas fa-store-alt text-2xl text-mastaa-600"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3" data-swahili="Jukwaa Lililopangwa" data-english="Organized Platform">Jukwaa Lililopangwa</h3>
-          <p class="text-gray-600" data-swahili="Hakuna jukwaa la kimfumo la chapa za kienyeji. Tunawapa wauzaji na wateja mazingira salama na yaliyopangwa." data-english="No systematic platform for local brands. We give sellers and customers a safe and organized environment.">
-            Hakuna jukwaa la kimfumo la chapa za kienyeji. Tunawapa wauzaji na wateja mazingira salama na yaliyopangwa.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- App Preview -->
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4" data-swahili="Onesho la Programu" data-english="App Preview">Onesho la Programu</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-swahili="Landing page inayofanya kazi 100% kwa simu za Tanzania" data-english="Fully functional landing page optimized for Tanzanian mobile devices">
-          Landing page inayofanya kazi 100% kwa simu za Tanzania
-        </p>
-      </div>
-      
-      <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
-        <div class="phone-mockup bg-gray-800 p-6 w-80">
-          <div class="phone-screen h-[500px] p-3">
-            <div class="h-full flex flex-col">
-              <div class="flex justify-between items-center mb-4">
-                <div class="w-20 h-6 bg-gray-300 rounded-full"></div>
-                <div class="flex space-x-1">
-                  <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
-                  <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
-                  <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
-                </div>
-              </div>
-              
-              <div class="screen-content flex-grow">
-                <div class="flex items-center mb-6">
-                  <div class="w-10 h-10 bg-mastaa-500 rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold">M</span>
-                  </div>
-                  <span class="ml-3 font-bold text-gray-800">MarketMastaa</span>
-                </div>
-                
-                <div class="mb-4">
-                  <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-3 mb-6">
-                  <div class="h-32 bg-mastaa-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-tshirt text-2xl text-mastaa-600"></i>
-                  </div>
-                  <div class="h-32 bg-mastaa-50 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-utensils text-2xl text-mastaa-600"></i>
-                  </div>
-                  <div class="h-32 bg-mastaa-50 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-gem text-2xl text-mastaa-600"></i>
-                  </div>
-                  <div class="h-32 bg-mastaa-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-paint-brush text-2xl text-mastaa-600"></i>
+        <div class="lg:w-1/2 flex justify-center">
+          <div class="phone-mockup bg-gray-800 p-6 w-80 animate-float">
+            <div class="phone-screen h-[500px] p-3">
+              <div class="h-full flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                  <div class="w-20 h-6 bg-gray-300 rounded-full"></div>
+                  <div class="flex space-x-1">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
                   </div>
                 </div>
                 
-                <div class="bg-mastaa-500 text-white text-center py-3 rounded-lg font-bold">
-                  <span data-swahili="ANZA KUUZA SASA" data-english="START SELLING NOW">ANZA KUUZA SASA</span>
+                <div class="screen-content flex-grow">
+                  <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-mastaa-500 rounded-lg flex items-center justify-center">
+                      <span class="text-white font-bold">M</span>
+                    </div>
+                    <span class="ml-3 font-bold text-gray-800">MarketMastaa</span>
+                  </div>
+                  
+                  <div class="text-center mb-6">
+                    <div class="text-2xl font-bold text-gray-800 mb-2">Welcome Back, Sarah!</div>
+                    <div class="text-gray-600">Your store made TZS 450,000 this week</div>
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="h-32 bg-mastaa-100 rounded-lg flex flex-col items-center justify-center p-3">
+                      <i class="fas fa-eye text-2xl text-mastaa-600 mb-2"></i>
+                      <span class="text-sm font-bold">1,240 Views</span>
+                      <span class="text-xs text-gray-600">Today</span>
+                    </div>
+                    <div class="h-32 bg-mastaa-50 rounded-lg flex flex-col items-center justify-center p-3">
+                      <i class="fas fa-shopping-cart text-2xl text-mastaa-600 mb-2"></i>
+                      <span class="text-sm font-bold">42 Orders</span>
+                      <span class="text-xs text-gray-600">This week</span>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-mastaa-500 text-white text-center py-3 rounded-lg font-bold">
+                    VIEW ANALYTICS DASHBOARD
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Bar -->
+  <section class="bg-white py-10">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="stat-number">10K+</div>
+          <div class="text-gray-600 font-medium">Active Sellers</div>
+        </div>
+        <div>
+          <div class="stat-number">500K+</div>
+          <div class="text-gray-600 font-medium">Products Listed</div>
+        </div>
+        <div>
+          <div class="stat-number">85%</div>
+          <div class="text-gray-600 font-medium">Repeat Customers</div>
+        </div>
+        <div>
+          <div class="stat-number">TZS 5B+</div>
+          <div class="text-gray-600 font-medium">Sales Volume</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">How MarketMastaa Works</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get your business online in just 3 simple steps</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="feature-card bg-white p-8 rounded-2xl shadow-md">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-mastaa-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-bold text-mastaa-600">1</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Sign Up Free</h3>
+            <p class="text-gray-600">Create your seller account in 2 minutes. No credit card required for the free trial.</p>
+          </div>
+        </div>
         
-        <div class="max-w-lg">
-          <h3 class="text-2xl font-bold text-gray-800 mb-6" data-swahili="Vipengele Vikuu" data-english="Key Features">Vipengele Vikuu</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Sokoni kwa wafanyabiashara wadogo" data-english="Marketplace for small businesses">Sokoni kwa wafanyabiashara wadogo</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Maduka ya wauzaji" data-english="Vendor storefronts">Maduka ya wauzaji</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Orodha ya bidhaa na malipo ya simu" data-english="Product listings + mobile payments">Orodha ya bidhaa na malipo ya simu</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Muunganisho wa washirika wa usafirishaji" data-english="Delivery partners integration">Muunganisho wa washirika wa usafirishaji</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Ukaguzi wa wateja" data-english="Customer reviews">Ukaguzi wa wateja</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Takwimu za wauzaji" data-english="Seller analytics">Takwimu za wauzaji</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-mastaa-500 text-xl mr-3 mt-1"></i>
-              <span data-swahili="Matangazo ya kukuza mauzo" data-english="Ads boosting for vendors">Matangazo ya kukuza mauzo</span>
-            </li>
-          </ul>
-          
-          <div class="mt-8 p-6 bg-mastaa-50 rounded-xl">
-            <h4 class="font-bold text-gray-800 mb-2" data-swahili="Kwa Nini Itafanya Kazi?" data-english="Why It Will Work">Kwa Nini Itafanya Kazi?</h4>
-            <p class="text-gray-700" data-swahili="Ukuaji wa biashara ndogo Tanzania, kila mtu anataka duka la digital, wauzaji wanalipa usajili wa kila mwezi au ada kwa kila mauzo, rahisi kupanua." data-english="Small business boom in Tanzania, everyone wants a digital shop, sellers pay monthly subscription or per sale commission, easy to scale.">
-              Ukuaji wa biashara ndogo Tanzania, kila mtu anataka duka la digital, wauzaji wanalipa usajili wa kila mwezi au ada kwa kila mauzo, rahisi kupanua.
-            </p>
+        <div class="feature-card bg-white p-8 rounded-2xl shadow-md">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-mastaa-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-bold text-mastaa-600">2</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Set Up Your Shop</h3>
+            <p class="text-gray-600">Customize your storefront, upload products, and set your prices in your dashboard.</p>
+          </div>
+        </div>
+        
+        <div class="feature-card bg-white p-8 rounded-2xl shadow-md">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-mastaa-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-bold text-mastaa-600">3</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Start Selling</h3>
+            <p class="text-gray-600">Get orders, accept mobile payments, and we'll handle delivery logistics for you.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing CTA -->
-  <section class="py-20 bg-gradient-to-r from-mastaa-50 to-mastaa-100">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-6" data-swahili="Bei Rahisi" data-english="Simple Pricing">Bei Rahisi</h2>
-      <p class="text-xl text-gray-700 mb-10 max-w-2xl mx-auto" data-swahili="Jisajili leo – hakuna ada ya mwezi wa kwanza, wa pili, wala wa tatu" data-english="Sign up today – no fees for the first, second, or third month">
-        Jisajili leo – hakuna ada ya mwezi wa kwanza, wa pili, wala wa tatu
-      </p>
-      
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-          <div class="text-4xl font-bold text-mastaa-600 mb-4" data-swahili="BURE" data-english="FREE">BURE</div>
-          <div class="text-lg font-bold text-gray-800 mb-2" data-swahili="Miezi 3 ya Kwanza" data-english="First 3 Months">Miezi 3 ya Kwanza</div>
-          <ul class="text-gray-600 text-left mt-6 space-y-3">
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Duka la digital" data-english="Digital shop">Duka la digital</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Orodha ya bidhaa 10" data-english="10 product listings">Orodha ya bidhaa 10</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Malipo ya simu" data-english="Mobile payments">Malipo ya simu</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-mastaa-500 transform scale-105">
-          <div class="text-4xl font-bold text-mastaa-600 mb-4">TZS 9,999<span class="text-lg text-gray-600">/mwezi</span></div>
-          <div class="text-lg font-bold text-gray-800 mb-2" data-swahili="Baada ya Miezi 3" data-english="After 3 Months">Baada ya Miezi 3</div>
-          <div class="bg-mastaa-100 text-mastaa-800 text-sm font-bold py-1 px-3 rounded-full inline-block mb-6" data-swahili="PLAN BORA" data-english="BEST PLAN">PLAN BORA</div>
-          <ul class="text-gray-600 text-left mt-6 space-y-3">
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Orodha ya bidhaa isiyo na kikomo" data-english="Unlimited product listings">Orodha ya bidhaa isiyo na kikomo</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Takwimu za kina" data-english="Detailed analytics">Takwimu za kina</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Matangazio ya kukuza mauzo" data-english="Sales boosting ads">Matangazio ya kukuza mauzo</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-          <div class="text-4xl font-bold text-mastaa-600 mb-4">5%<span class="text-lg text-gray-600"> kwa mauzo</span></div>
-          <div class="text-lg font-bold text-gray-800 mb-2" data-swahili="Ada kwa Mauzo" data-english="Commission Plan">Ada kwa Mauzo</div>
-          <ul class="text-gray-600 text-left mt-6 space-y-3">
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Hakuna ada ya kila mwezi" data-english="No monthly fees">Hakuna ada ya kila mwezi</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Lipa tu unapo uza" data-english="Pay only when you sell">Lipa tu unapo uza</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-mastaa-500 mr-3 mt-1"></i>
-              <span data-swahili="Bora kwa wauzaji wapya" data-english="Ideal for new sellers">Bora kwa wauzaji wapya</span>
-            </li>
-          </ul>
-        </div>
+  <!-- Testimonials -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-800 mb-4">Success Stories</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from sellers who transformed their businesses</p>
       </div>
       
-      <a href="#signup" id="cta-button" class="bg-mastaa-500 hover:bg-mastaa-600 text-white font-bold text-xl px-12 py-5 rounded-full shadow-xl transform hover:scale-105 transition inline-block">
-        <i class="fas fa-rocket mr-3"></i><span data-swahili="Jisajili Sasa → Bure Miezi 3" data-english="Sign Up Now → Free 3 Months">Jisajili Sasa → Bure Miezi 3</span>
-      </a>
-      <p class="mt-8 text-gray-700 text-sm opacity-75" data-swahili="Hakuna kadi ya mkopo • Hakuna mikataba • Ondoka wakati wowote" data-english="No credit card • No contracts • Leave anytime">
-        Hakuna kadi ya mkopo • Hakuna mikataba • Ondoka wakati wowote
-      </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="testimonial-card bg-gray-50 p-8 rounded-2xl border border-gray-200">
+          <div class="flex items-center mb-6">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sarah" class="w-16 h-16 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold text-lg">Sarah Johnson</h4>
+              <p class="text-mastaa-600">Handmade Jewelry Store</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic mb-6">"MarketMastaa helped me reach customers across Tanzania. My sales increased by 300% in just 3 months!"</p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="testimonial-card bg-gray-50 p-8 rounded-2xl border border-gray-200">
+          <div class="flex items-center mb-6">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Juma" class="w-16 h-16 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold text-lg">Juma Mohamed</h4>
+              <p class="text-mastaa-600">Agricultural Products</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic mb-6">"The mobile payment integration is seamless. Now I can accept M-Pesa payments from anywhere in the country."</p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="testimonial-card bg-gray-50 p-8 rounded-2xl border border-gray-200">
+          <div class="flex items-center mb-6">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Neema" class="w-16 h-16 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold text-lg">Neema William</h4>
+              <p class="text-mastaa-600">Fashion Boutique</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic mb-6">"The analytics dashboard helped me understand my customers better. I now know exactly what products to stock."</p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-mastaa-600 to-mastaa-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Grow Your Business?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of Tanzanian sellers who have taken their businesses online with MarketMastaa</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="signup.html" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+          <i class="fas fa-store mr-2"></i>Start Free 3-Month Trial
+        </a>
+        <a href="contact.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold text-lg px-8 py-4 rounded-xl transition duration-300">
+          <i class="fas fa-phone-alt mr-2"></i>Schedule a Demo
+        </a>
+      </div>
+      
+      <p class="mt-8 text-sm opacity-90">
+        <i class="fas fa-shield-alt mr-2"></i>No credit card required • Cancel anytime • 24/7 support
+        </p>
     </div>
   </section>
 
@@ -475,39 +442,13 @@
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
-          <div class="flex items-center space-x-2 mb-4">
+          <div class="flex items-center space-x-2 mb-6">
             <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
               <span class="text-mastaa-900 font-bold text-xl">M</span>
             </div>
             <span class="font-display font-bold text-2xl">MARKETMASTAA</span>
           </div>
-          <p class="text-gray-300 text-sm" data-swahili="Sokoni la kidijitali nambari 1 Tanzania kwa wafanyabiashara wadogo." data-english="Tanzania's #1 digital marketplace for small businesses.">
-            Sokoni la kidijitali nambari 1 Tanzania kwa wafanyabiashara wadogo.
-          </p>
-        </div>
-        
-        <div>
-          <h4 class="font-bold text-lg mb-4" data-swahili="Harusi" data-english="Quick Links">Harusi</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Kuhusu Sisi" data-english="About Us">Kuhusu Sisi</a></li>
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Vipengele" data-english="Features">Vipengele</a></li>
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Bei" data-english="Pricing">Bei</a></li>
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Blog" data-english="Blog">Blog</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="font-bold text-lg mb-4" data-swahili="Usaidizi" data-english="Support">Usaidizi</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Maswali Yanayoulizwa Mara Kwa Mara" data-english="FAQ">Maswali Yanayoulizwa Mara Kwa Mara</a></li>
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Msaada kwa Wateja" data-english="Customer Support">Msaada kwa Wateja</a></li>
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Msaada kwa Wauzaji" data-english="Seller Support">Msaada kwa Wauzaji</a></li>
-            <li><a href="#" class="text-gray-300 hover:text-white transition" data-swahili="Wasiliana Nasi" data-english="Contact Us">Wasiliana Nasi</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="font-bold text-lg mb-4" data-swahili="Shiriki" data-english="Share">Shiriki</h4>
+          <p class="text-gray-300 mb-6">Tanzania's #1 digital marketplace connecting small businesses with customers nationwide.</p>
           <div class="flex space-x-4">
             <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
               <i class="fab fa-facebook-f"></i>
@@ -519,93 +460,103 @@
               <i class="fab fa-twitter"></i>
             </a>
             <a href="#" class="w-10 h-10 bg-mastaa-800 hover:bg-mastaa-700 rounded-full flex items-center justify-center transition">
-              <i class="fab fa-whatsapp"></i>
+              <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
-          <p class="mt-6 text-gray-300 text-sm">
-            © 2023 MarketMastaa. <span data-swahili="Haki zote zimehifadhiwa" data-english="All rights reserved">Haki zote zimehifadhiwa</span>.
-          </p>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+            <li><a href="features.html" class="text-gray-300 hover:text-white transition">Features</a></li>
+            <li><a href="pricing.html" class="text-gray-300 hover:text-white transition">Pricing</a></li>
+            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Resources</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Success Stories</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Help Center</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Seller Guide</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">API Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-lg mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">GDPR Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-mastaa-800 mt-10 pt-8 text-center text-gray-400">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <i class="fas fa-map-marker-alt mr-2"></i>Mlimani City, Sam Nujoma Road, Dar es Salaam, Tanzania
+          </div>
+          <div>
+            © 2023 MarketMastaa. All rights reserved.
+          </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript for language switching -->
+  <!-- JavaScript -->
   <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Language switching functionality
     document.addEventListener('DOMContentLoaded', function() {
       const swahiliBtn = document.getElementById('swahili-btn');
       const englishBtn = document.getElementById('english-btn');
-      const swahiliContent = document.getElementById('hero-swahili');
-      const englishContent = document.getElementById('hero-english');
-      const ctaButton = document.getElementById('cta-button');
       
-      // Switch to Swahili
-      swahiliBtn.addEventListener('click', function() {
-        // Update button states
-        swahiliBtn.classList.add('active');
-        englishBtn.classList.remove('active');
-        
-        // Show Swahili content, hide English
-        swahiliContent.classList.add('active');
-        englishContent.classList.remove('active');
-        
-        // Update all elements with data-swahili attribute
-        document.querySelectorAll('[data-swahili]').forEach(element => {
-          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = element.getAttribute('data-swahili');
-          } else {
-            element.textContent = element.getAttribute('data-swahili');
-          }
+      if (swahiliBtn && englishBtn) {
+        swahiliBtn.addEventListener('click', function() {
+          swahiliBtn.classList.add('active');
+          englishBtn.classList.remove('active');
+          // Language switching logic would go here
         });
         
-        // Update page title
-        document.title = "MARKETMASTAA | Duka la Digital la Tanzania";
-      });
-      
-      // Switch to English
-      englishBtn.addEventListener('click', function() {
-        // Update button states
-        englishBtn.classList.add('active');
-        swahiliBtn.classList.remove('active');
-        
-        // Show English content, hide Swahili
-        englishContent.classList.add('active');
-        swahiliContent.classList.remove('active');
-        
-        // Update all elements with data-english attribute
-        document.querySelectorAll('[data-english]').forEach(element => {
-          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = element.getAttribute('data-english');
-          } else {
-            element.textContent = element.getAttribute('data-english');
-          }
+        englishBtn.addEventListener('click', function() {
+          englishBtn.classList.add('active');
+          swahiliBtn.classList.remove('active');
+          // Language switching logic would go here
         });
+      }
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
         
-        // Update page title
-        document.title = "MARKETMASTAA | Tanzania's Digital Marketplace";
-      });
-      
-      // Initialize tooltips for language buttons
-      swahiliBtn.title = "Change to Swahili language";
-      englishBtn.title = "Change to English language";
-      
-      // Add smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if(targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
       });
     });
   </script>
 </body>
 </html>
+
+        
