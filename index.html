@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sw" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MarketMastaa – Tanzania’s #1 marketplace ya wauzaji wadogo. Jenga duka lako la digital leo!" />
+
+  <title>MARKETMASTAA | Duka la Digital la Tanzania</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://marketmastaa-tz.github.io/logo.png" />
+
+  <!-- Google Fonts - Inter + Poppins (feels premium & loads fast in TZ) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN (perfect for prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            mastaa: {
+              50: '#ecfdf5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064e3b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .hero-bg {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Hero Section -->
+  <header class="hero-bg text-white">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-display font-bold mb-6">
+          Jenga Duka Lako la Digital<br>
+          <span class="text-yellow-300">Bure kwa Miezi 3 Ya Kwanza</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-10 opacity-95">
+          Etsy + Jiji + Instagram Shop – iliyoundwa kwa ajili ya wafanyabiashara wa Tanzania
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#anza" class="bg-white text-mastaa-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-xl shadow-lg transform hover:scale-105 transition">
+            Anza Kuuza Sasa (Free)
+          </a>
+          <a href="#kwa-wateja" class="border-2 border-white hover:bg-white hover:text-mastaa-600 font-bold text-lg px-8 py-4 rounded-xl transition">
+            Vinjari Bidhaa
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w-full bg-white/10 backdrop-blur-sm py-4 mt-12">
+      <div class="container mx-auto px-4 text-center text-sm">
+        Tunakubali M-Pesa • Tigo Pesa • Airtel Money • HaloPesa • Visa/Mastercard
+      </div>
+    </div>
+  </header>
+
+  <!-- Trust badges -->
+  <section class="bg-white py-8 shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-center items-center gap-8 text-gray-600 opacity-70">
+        <span>10,000+ Wauzaji</span>
+        <span>•</span>
+        <span>Uhakika wa Bidhaa</span>
+        <span>•</span>
+        <span>Delivery Nationwide</span>
+        <span>•</span>
+        <span>Hakuna Ulaghai</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot preview (coming soon) -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-mastaa-600 font-bold text-lg">Landing page inayofanya kazi 100% kwa simu za Tanzania</p>
+      <div class="mt-10 bg-gray-200 border-2 border-dashed rounded-xl w-full max-w-3xl mx-auto h-96 flex items-center justify-center text-gray-500">
+        App Preview (iPhone + Android) – Coming in the next message
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <footer class="bg-mastaa-900 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">
+        Tayari kuanza?
+      </h2>
+      <p class="text-xl mb-8">Jisajili leo – hakuna ada ya mwezi wa kwanza, wa pili, wala wa tatu</p>
+      <a href="#anza" class="bg-yellow-400 text-mastaa-900 hover:bg-yellow-300 font-bold text-xl px-12 py-5 rounded-full shadow-xl transform hover:scale-110 transition inline-block">
+        Anza Kuuza Sasa → Free 3 Months
+      </a>
+      <p class="mt-8 text-sm opacity-75">No credit card • No contracts • Ondoka wakati wowote</p>
+    </div>
+  </footer>
+
+</body>
+</html>
